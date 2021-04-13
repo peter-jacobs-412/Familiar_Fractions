@@ -12,9 +12,10 @@ class DisplayCustomWrite {
     char fraction_line_3[4] = {"---"};
   public:
     DisplayCustomWrite();
-    void disp_1_DigitFrac(int numer, int denom, int display_num);
-    void disp_2_DigitFrac(int numer, int denom, int display_num);
-    void disp_3_DigitFrac(int numer, int denom, int display_num);
+    void disp_1_Digit(int number, bool num_or_denom, int display_num);
+    void disp_2_Digit(int number, bool num_or_denom, int display_num);
+    void disp_3_Digit(int number, bool num_or_denom, int display_num);
+    void dispFracLine(int digits, int display_num);
     void formatCompare();
     void dispFrac(int numer, int denom, int display_num);
 };

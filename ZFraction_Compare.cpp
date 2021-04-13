@@ -25,6 +25,7 @@ void FracComp::dispDiff1() {
   int left_numerator = 1;
   int right_numerator = 3;
   //genrate the numerators
+  //Function is currently bugged will bug fix when i have the chance
   //makeNumer(left_numerator, right_numerator, denominator, denominator);
 
   //reformat and print the fractions to the screen
@@ -47,7 +48,7 @@ void FracComp::makeNumer(int &numer1, int &numer2, int denom1, int denom2) {
     numer2 = random(0, denom2 + 1);
     //calculate the fraction that is created
     frac1 = (numer1 * 1.0) / (denom1 * 1.0);
-    frac2 = (numer1 * 1.0) / (denom1 * 1.0);
+    frac2 = (numer2 * 1.0) / (denom2 * 1.0);
   }
 }
 
