@@ -91,10 +91,18 @@ void DisplayCustomWrite::dispFracLine(int digits, int display_num) {
     display1.textSetCursor(162 + display_num, 195);
     display1.textTransparent(RA8875_BLACK);
     display1.textWrite(fraction_line_2);
+    //This is added here in order to have it display one contious line, by overlaying a single and double well have that
+    display1.textSetCursor(180 + display_num, 195);
+    display1.textTransparent(RA8875_BLACK);
+    display1.textWrite(fraction_line_1);
   } else if (digits == 3) {
     display1.textSetCursor(144 + display_num, 195);
     display1.textTransparent(RA8875_BLACK);
     display1.textWrite(fraction_line_3);
+    //This is added here in order to have it display one contious line overlaying a triple and double will do so
+    display1.textSetCursor(162 + display_num, 195);
+    display1.textTransparent(RA8875_BLACK);
+    display1.textWrite(fraction_line_2);
   } else {
     Serial.println("ERROR FRAC TO BIG");
   }
@@ -125,8 +133,6 @@ void DisplayCustomWrite::dispFrac(int numer, int denom, int display_num) {
   else if (numer < 100) {
     //display numerator with 2 digits
     disp_2_Digit(numer, true, display_num);
-    //display numerator with 1 digit
-    disp_1_Digit(numer, true, display_num);
     //display the denominator with the correct number of digits
     //since numer has 2 digits frac line is 2 for all but a denom of 3 digits
     if (denom < 10) {
@@ -147,12 +153,11 @@ void DisplayCustomWrite::dispFrac(int numer, int denom, int display_num) {
   }
 
   else if (numer < 1000) {
+    //display numerator with 3 digits
     disp_3_Digit(numer, true, display_num);
-    //display numerator with 1 digit
-    disp_1_Digit(numer, true, display_num);
-    //display the denominator with the correct number of digits
     //since numer has 3 digits the frac line will always be 3 so we will move it outside of the if else chain for denom size
     dispFracLine(3, display_num);
+    //display the denominator with the correct number of digits
     if (denom < 10) {
       disp_1_Digit(denom, false, display_num);
     }
