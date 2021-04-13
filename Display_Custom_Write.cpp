@@ -3,6 +3,7 @@
 #include "Adafruit_RA8875.h"
 #include "Display_Custom_Write.h"
 
+//SUPER INMPORTANT NOTE TEXT SIZE OF 3 MEANS A CHARACTER IS 36 PIXELS WIDE AND 44 PIXELS TALL
 DisplayCustomWrite::DisplayCustomWrite() {
 
 }
@@ -24,7 +25,7 @@ void DisplayCustomWrite::disp_1_Digit(int number, bool num_or_denom, int display
   }
 
   //display number at given postion
-  display1.textSetCursor(150 + display_num, height); //The 150 here is the horizontal offset that needs to be calculated
+  display1.textSetCursor(180 + display_num, height); //this has been aporiatley horizontally centterted
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite(number_char);
 }
@@ -44,9 +45,9 @@ void DisplayCustomWrite::disp_2_Digit(int number, bool num_or_denom, int display
   } else {
     height = 245;
   }
-
+  
   //display number at given postion
-  display1.textSetCursor(150 + display_num, height); //The 150 here is the horizontal offset that needs to be calculated
+  display1.textSetCursor(162 + display_num, height); //The 150 here is the horizontal offset that needs to be calculated
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite(number_char);
 }
@@ -68,7 +69,7 @@ void DisplayCustomWrite::disp_3_Digit(int number, bool num_or_denom, int display
   }
 
   //display number at given postion
-  display1.textSetCursor(150 + display_num, height); //The 150 here is the horizontal offset that needs to be calculated
+  display1.textSetCursor(144 + display_num, height); //The 150 here is the horizontal offset that needs to be calculated
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite(number_char);
 }
@@ -83,15 +84,15 @@ void DisplayCustomWrite::dispFracLine(int digits, int display_num) {
   display1.textEnlarge(3);
   //display fraction line given digits
   if(digits == 1) {
-    display1.textSetCursor(150 + display_num, 195);
+    display1.textSetCursor(180 + display_num, 195);
     display1.textTransparent(RA8875_BLACK);
     display1.textWrite(fraction_line_1);
   } else if (digits == 2) {
-    display1.textSetCursor(150 + display_num, 195);
+    display1.textSetCursor(162 + display_num, 195);
     display1.textTransparent(RA8875_BLACK);
     display1.textWrite(fraction_line_2);
   } else if (digits == 3) {
-    display1.textSetCursor(150 + display_num, 195);
+    display1.textSetCursor(144 + display_num, 195);
     display1.textTransparent(RA8875_BLACK);
     display1.textWrite(fraction_line_3);
   } else {
