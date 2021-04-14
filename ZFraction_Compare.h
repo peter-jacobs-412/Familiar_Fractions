@@ -15,13 +15,15 @@ class FracComp {
     DisplayCustomWrite screen = DisplayCustomWrite();
     //used to store the possibilities that a diffculty 1 denominator could take on
     int diff_1_denoms[4] = {2,3,4,5};
-
+    //stores the pin values for the two buttons
+    int left_button;
+    int right_button;
   public:
-    FracComp();
+    FracComp(int left_pin, int right_pin);
     //displays a diffculty one problem
     void dispDiff1();
     //used to create acceptable numerators for a fraction problem
     void makeNumer(int &numer1, int &numer, int denom1, int denom2);
-    //used to automatically display a fraction given a numerator and a denominator and given either left or right as its inputs
-    //void dispFrac(int numerator, int denominator, int display_number);
+    //evaluates whether the user got the answer correct
+    void evalAnswer(int numer1, int numer2, int denom1, int denom2);
 };

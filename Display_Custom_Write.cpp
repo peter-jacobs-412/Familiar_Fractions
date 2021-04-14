@@ -7,6 +7,10 @@
 DisplayCustomWrite::DisplayCustomWrite() {
 
 }
+
+// ##################################################################### //
+// ##################### N DIGIT DISPLAY FUNCTIONS ##################### //
+// ##################################################################### //
 void DisplayCustomWrite::disp_1_Digit(int number, bool num_or_denom, int display_num) {
   //Converting the numbers into strings that can be displayed
   char number_char[4];
@@ -73,11 +77,18 @@ void DisplayCustomWrite::disp_3_Digit(int number, bool num_or_denom, int display
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite(number_char);
 }
+// ##################################################################### //
+// ########################## FORMAT FUNCTIONS ######################### //
+// ##################################################################### //
 void DisplayCustomWrite::formatCompare() {
-  display1.graphicsMode(); //this might be wrong need to look at library
+  //this formats the screen as white with a 10px wide black divider bar in the middle
+  display1.graphicsMode();
   display1.fillScreen(RA8875_WHITE);
   display1.fillRect(395, 0, 10, 480, RA8875_BLACK);
 }
+// ##################################################################### //
+// ################# OTHER NUMERICAL FRACTION FUNCTIONS ################ //
+// ##################################################################### //
 void DisplayCustomWrite::dispFracLine(int digits, int display_num) {
   //swap to text mode and put text at the largest possible size
   display1.textMode();
@@ -175,4 +186,25 @@ void DisplayCustomWrite::dispFrac(int numer, int denom, int display_num) {
   else {
     Serial.println("ERROR FRAC TO BIG");
   }
+}
+// ##################################################################### //
+// ############## CORRECT AND INCORRECT DISPLAY FUNCTIONS ############## //
+// ##################################################################### //
+void DisplayCustomWrite::dispCorrect() {
+  display1.graphicsMode();
+  display1.fillScreen(RA8875_GREEN);
+  display1.textMode();
+  display1.textEnlarge(3);
+  display1.textSetCursor(85, frac_line_height);
+  display1.textTransparent(RA8875_BLACK);
+  display1.textWrite("That Was Correct!!");
+}
+void DisplayCustomWrite::dispWrong() {
+  display1.graphicsMode();
+  display1.fillScreen(RA8875_RED);
+  display1.textMode();
+  display1.textEnlarge(3);
+  display1.textSetCursor(85, frac_line_height);
+  display1.textTransparent(RA8875_BLACK);
+  display1.textWrite("That Was Incorrect");
 }
