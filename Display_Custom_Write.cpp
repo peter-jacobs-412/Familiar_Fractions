@@ -237,7 +237,25 @@ void DisplayCustomWrite::getPadding(int dimensions[], int &x_padding, int &y_pad
 // ##################################################################### //
 // ###################### CIRLCE FRACTION METHODS ###################### //
 // ##################################################################### //
+void DisplayCustomWrite::dispCircleFrac(int numer, int denom, int display_num) {
+  //calculate the angle theta of a arc that should be displayed
+  double theta = 2.0 * PI * numer / denom;
+  //display the whole cirle here
+  display1.fillCircle(198 + display_num, 240, 180, RA8875_CYAN);
+  //call partial circle heklper to turn full cirlce into an arc
 
+  //display the polar gird showing each single part of the denominator
+  dispPolarGrid(denom, display_num);
+}
+void DisplayCustomWrite::dispPolarGrid(int steps, int display_num) {
+  double step_size = 2.0 * PI / steps;
+  for (int i = 0; i < steps; i++) {
+    display1.drawLine(198 + display_num, 240, 198 + 180 * cos(i * step_size) + display_num, 240 + 180 * sin(i * step_size) , RA8875_BLACK);
+  }
+}
+void DisplayCustomWrite::partialCirleHelper(double theta, int display_num) {
+  
+}
 // ##################################################################### //
 // ############## CORRECT AND INCORRECT DISPLAY FUNCTIONS ############## //
 // ##################################################################### //

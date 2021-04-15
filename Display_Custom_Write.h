@@ -35,6 +35,9 @@ class DisplayCustomWrite {
     //this functioned is used by the two functions above and is used to find how to postion to sqaure frac
     void getPadding(int dimensions[], int &x_padding, int &y_padding, int &box_dim);
 
+    void dispCircleFrac(int numer, int denom, int display_num);
+    void dispPolarGrid(int denom, int display_num);
+    void partialCirleHelper(double theta, int display_num);
     //These functions display N digits that is properly centered based on display num,
     //and whether its supposed to be numerator or denominator
     void disp_1_Digit(int number, bool num_or_denom, int display_num);
