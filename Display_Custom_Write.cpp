@@ -200,6 +200,7 @@ void DisplayCustomWrite::dispSquareFrac(int numer, int denom[], int display_num)
   //find the padding and individual element size
   getPadding(denom, x_padding, y_padding, box_dim);
   //display the fraction
+  
   int count = 0;
   int i = 0;
   int j = 0;
@@ -207,24 +208,31 @@ void DisplayCustomWrite::dispSquareFrac(int numer, int denom[], int display_num)
     display1.fillRect(x_padding + j * box_dim + display_num, y_padding + i * box_dim, box_dim, box_dim, RA8875_GREEN);
     j++;
     if (j == denom[0]) {j = 0; i++;}
+    count++;
   }
   dispSquareGrid(denom, x_padding, y_padding, box_dim, display_num);
 }
 void DisplayCustomWrite::dispSquareGrid(int dimensions[], int x_padding, int y_padding, int box_dim, int display_num) {
-  for (int j = 0; j < dimensions[1]; j++) {
-    for (int i = 0; i < dimensions[0]; i++)
+  for (int i = 0; i < dimensions[1]; i++) {
+    for (int j = 0; j < dimensions[0]; j++)
     display1.drawRect(x_padding + j * box_dim + display_num, y_padding + i * box_dim, box_dim, box_dim, RA8875_BLACK);
   }
 }
 void DisplayCustomWrite::getPadding(int dimensions[], int &x_padding, int &y_padding, int &box_dim) {
   //find the box dimensions
   box_dim = 395;
-  while (box_dim * dimensions[0] > 395 and box_dim * dimensions[1] > 400) {
-    box_dim -= 5;
+  while (box_dim * dimensions[0] > 365 or box_dim * dimensions[1] > 450) {
+    box_dim -= 1;
   }
+  Serial.println("Box dims are:");
+  Serial.println(box_dim);
   //find the two paddings using the formula of (maxlength - lengthused) / 2 rounded up
   x_padding = ((395 - box_dim * dimensions[0]) / 2) + ((395 - box_dim * dimensions[0]) % 2);
-  y_padding = ((400 - box_dim * dimensions[1]) / 2) + ((400 - box_dim * dimensions[0]) % 2);
+  y_padding = ((480 - box_dim * dimensions[1]) / 2) + ((480 - box_dim * dimensions[1]) % 2);
+  Serial.println("Xpadding is:");
+  Serial.println(x_padding);
+  Serial.println("Ypadding is:");
+  Serial.println(y_padding);
 }
 // ##################################################################### //
 // ###################### CIRLCE FRACTION METHODS ###################### //

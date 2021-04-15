@@ -94,9 +94,10 @@ void FracComp::evalAnswer(int numer1, int numer2, int denom1, int denom2) {
 }
 
 void FracComp::testerFunc() {
-  int denom1[2] = {3,4};
-  int denom2[2] = {6,7};
+  int denom1[2] = {4,5};
+  int denom2[2] = {5,7};
+  screen.formatCompare();
   screen.dispSquareFrac(9, denom1, LEFT);
-  screen.dispSquareFrac(9, denom2, RIGHT);
+  screen.dispSquareFrac(24, denom2, RIGHT);
   delay(10000);
 }
