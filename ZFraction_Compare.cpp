@@ -19,7 +19,7 @@ FracComp::FracComp(int left_pin, int right_pin) {
   pinMode(right_button, INPUT_PULLUP);
 }
 
-void FracComp::dispDiff1() {
+void FracComp::dispDiff1_1() {
   //generate random index between 0 and 4
   int rand_index = random(4);
   //getting denominator from the list of accepted denoms using a random index value
@@ -58,6 +58,7 @@ void FracComp::makeNumer(int &numer1, int &numer2, int denom1, int denom2) {
     frac2 = (numer2 * 1.0) / (denom2 * 1.0);
   }
 }
+
 void FracComp::evalAnswer(int numer1, int numer2, int denom1, int denom2) {
   //Determine the useres choice
   //1 is left button 2 is right button
@@ -90,4 +91,12 @@ void FracComp::evalAnswer(int numer1, int numer2, int denom1, int denom2) {
     screen.dispWrong();
     //add audio stuff here
   }
+}
+
+void FracComp::testerFunc() {
+  int denom1[2] = {3,4};
+  int denom2[2] = {6,7};
+  screen.dispSquareFrac(9, denom1, LEFT);
+  screen.dispSquareFrac(9, denom2, RIGHT);
+  delay(10000);
 }

@@ -26,19 +26,33 @@ class DisplayCustomWrite {
     //likely once speaker integration is done it might need to recieve the speaker pin
     //it could also recieve the pins used for RST and CS for the display in main, but not nesecary
     DisplayCustomWrite();
+
+    //this is used to display a fraction as a square, 
+    //the denominator is given as a two dimensiaonal vector since it is the product of the dimensions of the sqaure
+    void dispSquareFrac(int numer, int denom[], int display_num);
+    //this function is used to display the grid that goes over the Sqaure fraction display
+    void dispSquareGrid(int dimensions[], int x_padding, int y_padding, int box_dim, int display_num);
+    //this functioned is used by the two functions above and is used to find how to postion to sqaure frac
+    void getPadding(int dimensions[], int &x_padding, int &y_padding, int &box_dim);
+
     //These functions display N digits that is properly centered based on display num,
-    // and whether its supposed to be numerator or denominator
+    //and whether its supposed to be numerator or denominator
     void disp_1_Digit(int number, bool num_or_denom, int display_num);
     void disp_2_Digit(int number, bool num_or_denom, int display_num);
     void disp_3_Digit(int number, bool num_or_denom, int display_num);
+
     //this is used to display a frac line based upon the max amount of digits in a fraction
     void dispFracLine(int digits, int display_num);
+
     //this formats the screen for a compare problem
     void formatCompare();
+
     //this displays a numerical fraction given a display num a numerator and a denominator
     void dispFrac(int numer, int denom, int display_num);
+
     //displays to the user that they got the problem right
     void dispCorrect();
+
     //displays to the user they got the problem wrong
     void dispWrong();
 };

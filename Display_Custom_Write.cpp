@@ -9,7 +9,7 @@ DisplayCustomWrite::DisplayCustomWrite() {
 }
 
 // ##################################################################### //
-// ##################### N DIGIT DISPLAY FUNCTIONS ##################### //
+// ########### N DIGIT NUMERICAL FRACTION DISPLAY FUNCTIONS ############ //
 // ##################################################################### //
 void DisplayCustomWrite::disp_1_Digit(int number, bool num_or_denom, int display_num) {
   //Converting the numbers into strings that can be displayed
@@ -188,6 +188,49 @@ void DisplayCustomWrite::dispFrac(int numer, int denom, int display_num) {
   }
 }
 // ##################################################################### //
+// ###################### SQAURE FRACTION METHODS ###################### //
+// ##################################################################### //
+void DisplayCustomWrite::dispSquareFrac(int numer, int denom[], int display_num) {
+  //this holds the padding between the fraction being displayed and the left edge of the screen
+  int x_padding;
+  //this holds the padding between the fraction being displayed and the top of the screen
+  int y_padding;
+  //this holds this size of the each box IE one numerator
+  int box_dim;
+  //find the padding and individual element size
+  getPadding(denom, x_padding, y_padding, box_dim);
+  //display the fraction
+  int count = 0;
+  int i = 0;
+  int j = 0;
+  while (count < numer) {
+    display1.fillRect(x_padding + j * box_dim + display_num, y_padding + i * box_dim, box_dim, box_dim, RA8875_GREEN);
+    j++;
+    if (j == denom[0]) {j = 0; i++;}
+  }
+  dispSquareGrid(denom, x_padding, y_padding, box_dim, display_num);
+}
+void DisplayCustomWrite::dispSquareGrid(int dimensions[], int x_padding, int y_padding, int box_dim, int display_num) {
+  for (int j = 0; j < dimensions[1]; j++) {
+    for (int i = 0; i < dimensions[0]; i++)
+    display1.drawRect(x_padding + j * box_dim + display_num, y_padding + i * box_dim, box_dim, box_dim, RA8875_BLACK);
+  }
+}
+void DisplayCustomWrite::getPadding(int dimensions[], int &x_padding, int &y_padding, int &box_dim) {
+  //find the box dimensions
+  box_dim = 395;
+  while (box_dim * dimensions[0] > 395 and box_dim * dimensions[1] > 400) {
+    box_dim -= 5;
+  }
+  //find the two paddings using the formula of (maxlength - lengthused) / 2 rounded up
+  x_padding = ((395 - box_dim * dimensions[0]) / 2) + ((395 - box_dim * dimensions[0]) % 2);
+  y_padding = ((400 - box_dim * dimensions[1]) / 2) + ((400 - box_dim * dimensions[0]) % 2);
+}
+// ##################################################################### //
+// ###################### CIRLCE FRACTION METHODS ###################### //
+// ##################################################################### //
+
+// ##################################################################### //
 // ############## CORRECT AND INCORRECT DISPLAY FUNCTIONS ############## //
 // ##################################################################### //
 void DisplayCustomWrite::dispCorrect() {
@@ -198,6 +241,7 @@ void DisplayCustomWrite::dispCorrect() {
   display1.textSetCursor(85, frac_line_height);
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite("That Was Correct!!");
+  
 }
 void DisplayCustomWrite::dispWrong() {
   display1.graphicsMode();
