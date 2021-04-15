@@ -2,6 +2,9 @@
 #include "Adafruit_GFX.h"
 #include "Adafruit_RA8875.h"
 
+//this is the value that is theta is compared against to see if we should have the triangle cutout above or below the line
+#define THETA_LIMIT 50.54846629
+
 //This class is used to have a standard set of functions used to display frractions in difrent formats to the screen
 class DisplayCustomWrite {
   private:

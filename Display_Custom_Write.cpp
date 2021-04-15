@@ -240,9 +240,12 @@ void DisplayCustomWrite::getPadding(int dimensions[], int &x_padding, int &y_pad
 void DisplayCustomWrite::dispCircleFrac(int numer, int denom, int display_num) {
   //calculate the angle theta of a arc that should be displayed
   double theta = 2.0 * PI * numer / denom;
+
   //display the whole cirle here
   display1.fillCircle(198 + display_num, 240, 180, RA8875_CYAN);
+
   //call partial circle heklper to turn full cirlce into an arc
+  partialCirleHelper(theta, display_num);
 
   //display the polar gird showing each single part of the denominator
   dispPolarGrid(denom, display_num);
@@ -254,7 +257,29 @@ void DisplayCustomWrite::dispPolarGrid(int steps, int display_num) {
   }
 }
 void DisplayCustomWrite::partialCirleHelper(double theta, int display_num) {
-  
+  //holds the number of quarter sections of an arc that theta has
+  int whole_quads = 0;
+  //finds the number of quarter sections that should be left filled and gives us our residual theta
+  while (theta > PI / 2) {
+    whole_quads ++;
+    theta -= PI / 2;
+  }
+  //this is used to determine which way the cutout tringle needs to be postioned
+  //once the residual theta is greater than 50.54846629 = THETA_LIMIT 
+  //then we must use a triangle above the line instead of below the line to cut out the correct arc
+  //this also changes the priority in which quadrants are cut out
+  //if triangle is above the line then we want to cutout quadrants in the order of 4 , 3 , 2
+  //if the triangle is below the line then we want to cut out quadrants in the order of 2, 3, 4
+  if (theta < THETA_LIMIT) {
+    //make the triangle cutout below the line,
+    //this means that the third point has the same horizontal component as our second point,
+    // but varies in its height dependinig on theta
+    display1.fillTriangle(198 + display_num, 240, 395 + display_num, 240, 395 + display_num, 240 + 197 * tan(theta), RA8875_RED);
+    //do quadrant stuff here
+  } else if (theta > THETA_LIMIT) {
+    //make triangle cutout above the line
+    display1.fillTriangle(198 + display_num, 240, 198 + display_num, 0, 198 + display_num + 240 * tan(theta), 0, RA8875_RED);
+  }
 }
 // ##################################################################### //
 // ############## CORRECT AND INCORRECT DISPLAY FUNCTIONS ############## //
