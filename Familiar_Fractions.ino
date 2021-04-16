@@ -54,7 +54,7 @@ void setup() {
 }
 
 void loop() {
-  compare.dispDiff1();
-  delay(5000);
-  
+  //compare.dispDiff1();
+  //delay(5000);
+  compare.testerFunc();
 }

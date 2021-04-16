@@ -20,8 +20,8 @@ FracComp::FracComp(int left_pin, int right_pin) {
 }
 
 void FracComp::dispDiff1_1() {
-  //generate random index between 0 and 4
-  int rand_index = random(4);
+  //generate random index between 0 and 5
+  int rand_index = random(5);
   //getting denominator from the list of accepted denoms using a random index value
   int denominator = diff_1_denoms[rand_index];
 
@@ -39,6 +39,9 @@ void FracComp::dispDiff1_1() {
 
   //evaluate the useres answer
   evalAnswer(left_numerator, right_numerator, denominator, denominator);
+}
+void FracComp::dispDiff_1_2() {
+
 }
 void FracComp::makeNumer(int &numer1, int &numer2, int denom1, int denom2) {
   //make random numerators
@@ -100,6 +103,6 @@ void FracComp::testerFunc() {
   //screen.dispSquareFrac(9, denom1, LEFT);
   //screen.dispSquareFrac(24, denom2, RIGHT);
   screen.dispCircleFrac(1, 6, LEFT);
-  screen.dispCircleFrac(3, 18, RIGHT);
+  screen.dispCircleFrac(1, 8, RIGHT);
   delay(10000);
 }

@@ -20,7 +20,7 @@ class FracComp {
   private:
     DisplayCustomWrite screen = DisplayCustomWrite();
     //used to store the possibilities that a diffculty 1 denominator could take on
-    int diff_1_denoms[4] = {2,3,4,5};
+    int diff_1_denoms[5] = {2,3,4,5, 6};
     //stores the pin values for the two buttons
     int left_button;
     int right_button;
@@ -34,4 +34,5 @@ class FracComp {
     void evalAnswer(int numer1, int numer2, int denom1, int denom2);
     //used to test things
     void testerFunc();
+    void dispDiff_1_2();
 };
