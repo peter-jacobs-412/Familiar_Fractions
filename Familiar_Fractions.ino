@@ -8,8 +8,8 @@
 // ====================================================== //
 //Button 1 and 2 are the two buttons that are on our board below the display 
 //each corelating to one hafl of the dispay with button 1 on the left and button 2 on the right
-#define BUTTON1 22
-#define BUTTON2 23
+#define BUTTONLEFT 22
+#define BUTTONRIGHT 23
 //Pins here are defined as part of the adafruit RA8875 driver board
 #define RA8875_INT 3
 #define RA8875_CS 10
@@ -21,12 +21,12 @@
 //starts the display
 Adafruit_RA8875 tft = Adafruit_RA8875(RA8875_CS, RA8875_RESET);
 
-FracComp compare = FracComp();
+FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
 
 void setup() {
   //declaring pins used noy by the display
-  pinMode(BUTTON1, INPUT_PULLUP);
-  pinMode(BUTTON2, INPUT_PULLUP);
+  pinMode(BUTTONLEFT, INPUT_PULLUP);
+  pinMode(BUTTONRIGHT, INPUT_PULLUP);
   pinMode(PROTO_BIT, OUTPUT);
   pinMode(ON_BOARD_LED, OUTPUT);
   //intializing rand seed
@@ -54,7 +54,7 @@ void setup() {
 }
 
 void loop() {
-  compare.dispDiff1();
-  delay(5000);
-  
+  //compare.dispDiff1();
+  //delay(5000);
+  compare.testerFunc();
 }
