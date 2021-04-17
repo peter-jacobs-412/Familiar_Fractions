@@ -113,64 +113,73 @@ void FracComp::dispDiff_3_3() {
 // ################ VERSUS LEVEL 4 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
 void FracComp::dispDiff_1_4() {
-  //generate random index between 0 and 5
-  int rand_index = random(5);
-  //getting denominator from the list of accepted denoms using a random index value
-  int denominator = diff_1_denoms[rand_index];
+  //left square denominator
+  int column_index = random(9);
+  int square_denom1[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
+  
+  //right square denominator
+  column_index = random(9);
+  int square_denom2[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
 
   //declare the numerators
   int left_numerator;
   int right_numerator;
-  //genrate the numerators
-  makeNumer(left_numerator, right_numerator, denominator, denominator);
+  //generate the numerators
+  makeNumer(left_numerator, right_numerator, square_denom1[0] * square_denom1[1], square_denom2[0] * square_denom2[1]);
 
   //reformat and print the fractions represented as squares to the screen
   screen.formatCompare();
-  screen.dispSquareFrac(left_numerator, denominator, LEFT);
-  screen.dispSquareFrac(right_numerator, denominator, RIGHT);
+  screen.dispSquareFrac(left_numerator, square_denom1, LEFT);
+  screen.dispSquareFrac(right_numerator, square_denom2, RIGHT);
 
   //evaluate the users answer
-  evalAnswer(left_numerator, right_numerator, denominator, denominator);
+  evalAnswer(left_numerator, right_numerator, square_denom1[0] * square_denom1[1], square_denom2[0] * square_denom2[1]);
 }
 void FracComp::dispDiff_2_4() {
-  //generate random index between 0 and 9
-  int rand_index = random(9);
-  //getting denominator from the list of accepted denoms using a random index value
-  int denominator = diff_2_denoms[rand_index];
+  //left square denominator
+  int column_index = random(9);
+  int square_denom1[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
+  
+  //right square denominator
+  column_index = random(9);
+  int square_denom2[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
 
   //declare the numerators
   int left_numerator;
   int right_numerator;
-  //genrate the numerators
-  makeNumer(left_numerator, right_numerator, denominator, denominator);
+  //generate the numerators
+  makeNumer(left_numerator, right_numerator, square_denom1[0] * square_denom1[1], square_denom2[0] * square_denom2[1]);
 
   //reformat and print the fractions represented as squares to the screen
   screen.formatCompare();
-  screen.dispSquareFrac(left_numerator, denominator, LEFT);
-  screen.dispSquareFrac(right_numerator, denominator, RIGHT);
+  screen.dispSquareFrac(left_numerator, square_denom1, LEFT);
+  screen.dispSquareFrac(right_numerator, square_denom2, RIGHT);
 
   //evaluate the users answer
-  evalAnswer(left_numerator, right_numerator, denominator, denominator);
+  evalAnswer(left_numerator, right_numerator, square_denom1[0] * square_denom1[1], square_denom2[0] * square_denom2[1]);
 }
 void FracComp::dispDiff_3_4() {
-  //generate random index between 0 and 15
-  int rand_index = random(15);
-  //getting denominator from the list of accepted denoms using a random index value
-  int denominator = diff_3_denoms[rand_index];
+  //left square denominator
+  int column_index = random(9);
+  int square_denom1[2] = {diff_3_sq[0][column_index], diff_3_sq[1][column_index]};
+  
+  //right square denominator
+  column_index = random(9);
+  int square_denom2[2] = {diff_3_sq[0][column_index], diff_3_sq[1][column_index]};
 
   //declare the numerators
   int left_numerator;
   int right_numerator;
-  //genrate the numerators
-  makeNumer(left_numerator, right_numerator, denominator, denominator);
+  //generate the numerators
+  makeNumer(left_numerator, right_numerator, square_denom1[0] * square_denom1[1], square_denom2[0] * square_denom2[1]);
 
   //reformat and print the fractions represented as squares to the screen
   screen.formatCompare();
-  screen.dispSquareFrac(left_numerator, denominator, LEFT);
-  screen.dispSquareFrac(right_numerator, denominator, RIGHT);
+  screen.dispSquareFrac(left_numerator, square_denom1, LEFT);
+  screen.dispSquareFrac(right_numerator, square_denom2, RIGHT);
 
   //evaluate the users answer
-  evalAnswer(left_numerator, right_numerator, denominator, denominator);
+  evalAnswer(left_numerator, right_numerator, square_denom1[0] * square_denom1[1], square_denom2[0] * square_denom2[1]);
 }
 
 // ##################################################################### //
