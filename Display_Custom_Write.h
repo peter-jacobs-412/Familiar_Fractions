@@ -3,7 +3,7 @@
 #include "Adafruit_RA8875.h"
 
 //this is the value that is theta is compared against to see if we should have the triangle cutout above or below the line
-#define THETA_LIMIT 50.54846629
+#define THI_LIMIT .927295218
 
 //This class is used to have a standard set of functions used to display frractions in difrent formats to the screen
 class DisplayCustomWrite {
@@ -18,7 +18,7 @@ class DisplayCustomWrite {
     //stores the height at which the numerator is diplayed in a fraction
     int numer_height;
     //stores the hieght of the fraciton line in fractions
-    int frac_line_height= 195;
+    int frac_line_height = 195;
     //stores the height at which the denominator is displayed
     int denom_height;
     //this stores the diffrent allignemnt values that are used to properly center a fractions
@@ -39,8 +39,9 @@ class DisplayCustomWrite {
     void getPadding(int dimensions[], int &x_padding, int &y_padding, int &box_dim);
 
     void dispCircleFrac(int numer, int denom, int display_num);
-    void dispPolarGrid(int denom, int display_num);
-    void partialCirleHelper(double theta, int display_num);
+    void dispPolarGrid(int denom, double intial_angle, int display_num);
+    double partialCirleHelper(double theta, int display_num);
+
     //These functions display N digits that is properly centered based on display num,
     //and whether its supposed to be numerator or denominator
     void disp_1_Digit(int number, bool num_or_denom, int display_num);

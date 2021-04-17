@@ -244,42 +244,82 @@ void DisplayCustomWrite::dispCircleFrac(int numer, int denom, int display_num) {
   //display the whole cirle here
   display1.fillCircle(198 + display_num, 240, 180, RA8875_CYAN);
 
+  
+  //this var stores the angle at which the polar grid is supposed to start at
+  //it is based upon the angle that was vut out in qudrant one(thi)
+  double intial_angle;
   //call partial circle heklper to turn full cirlce into an arc
-  partialCirleHelper(theta, display_num);
+  intial_angle = partialCirleHelper(theta, display_num);
 
   //display the polar gird showing each single part of the denominator
-  dispPolarGrid(denom, display_num);
+  dispPolarGrid(denom, intial_angle, display_num);
 }
-void DisplayCustomWrite::dispPolarGrid(int steps, int display_num) {
+void DisplayCustomWrite::dispPolarGrid(int steps, double intial_angle, int display_num) {
   double step_size = 2.0 * PI / steps;
+  //bug testing thing here
+  //display1.fillCircle(198 + 180 * cos(intial_angle) + display_num, 240 - 180 * sin(intial_angle), 10, RA8875_RED);
   for (int i = 0; i < steps; i++) {
-    display1.drawLine(198 + display_num, 240, 198 + 180 * cos(i * step_size) + display_num, 240 + 180 * sin(i * step_size) , RA8875_BLACK);
+    display1.drawLine(198 + display_num, 240, 198 + 180 * cos(i * step_size + intial_angle) + display_num, 240 - 180 * sin(i * step_size + intial_angle) , RA8875_BLACK);
   }
 }
-void DisplayCustomWrite::partialCirleHelper(double theta, int display_num) {
+double DisplayCustomWrite::partialCirleHelper(double theta, int display_num) {
   //holds the number of quarter sections of an arc that theta has
   int whole_quads = 0;
   //finds the number of quarter sections that should be left filled and gives us our residual theta
-  while (theta > PI / 2) {
+  while (theta > (PI / 2)) {
     whole_quads ++;
     theta -= PI / 2;
   }
-  //this is used to determine which way the cutout tringle needs to be postioned
-  //once the residual theta is greater than 50.54846629 = THETA_LIMIT 
-  //then we must use a triangle above the line instead of below the line to cut out the correct arc
-  //this also changes the priority in which quadrants are cut out
-  //if triangle is above the line then we want to cutout quadrants in the order of 4 , 3 , 2
-  //if the triangle is below the line then we want to cut out quadrants in the order of 2, 3, 4
-  if (theta < THETA_LIMIT) {
-    //make the triangle cutout below the line,
-    //this means that the third point has the same horizontal component as our second point,
-    // but varies in its height dependinig on theta
-    display1.fillTriangle(198 + display_num, 240, 395 + display_num, 240, 395 + display_num, 240 + 197 * tan(theta), RA8875_RED);
-    //do quadrant stuff here
-  } else if (theta > THETA_LIMIT) {
-    //make triangle cutout above the line
-    display1.fillTriangle(198 + display_num, 240, 198 + display_num, 0, 198 + display_num + 240 * tan(theta), 0, RA8875_RED);
+
+  //this is also reffered to as the angle of cut
+  double thi = PI/2 - theta;
+
+  //This section is used to cutout the right angle from the first quadrant
+  //THI LIMIT is the max angle we can cut out of the first quadrant with a triagnle 
+  //before the math for the 3rd point would try and place it off the screen and thus cause errors
+  if (thi < THI_LIMIT) {
+    //in this case all we need is one cutout which is ezpz
+    Serial.println("trigger1");
+    display1.fillTriangle(198 + display_num, 240, 378 + display_num, 240, 378 + display_num, 240 - 180 * tan(thi), RA8875_WHITE);
+  } else if (thi > THI_LIMIT) {
+    Serial.println("trigger2");
+    //this is the double triangle case in which we create the cutout by using two triangles instead of just one
+    display1.fillTriangle(198 + display_num, 240, 378 + display_num, 240, 378 + display_num, 0, RA8875_WHITE);
+    //the second triagnle shares its diagnol with the first and has a static 
+    //first(orgin) and second point(where first triangle intersect cirlce) 
+    //with its third point being dependent on theta
+    display1.fillTriangle(198 + display_num, 240, 306 + display_num, 96, 198 + 240 * tan(theta) + display_num, 0, RA8875_WHITE);
   }
+
+  //in this case we cover up everything but the first quadrant
+  if (whole_quads == 0) {
+    //cover up quad 4
+    //this draws a rectangle with upperleft hand corner at orgin with size = r
+    display1.fillRect(198 + display_num, 240, 180, 180, RA8875_WHITE);
+    //cover up quad 3
+    //this draws a rectangle with upperleft hand corner at location of theta = pi with size = r
+    display1.fillRect(18 + display_num, 240, 180, 180, RA8875_WHITE);
+    //cover up quad 2 
+    //this draws a rectangle with upper left location of 180 px away in both directions from the orgin with size = r
+    display1.fillRect(18 + display_num, 60, 180, 180, RA8875_WHITE);
+  }
+  //in this case we cover up everything except for the 1st and 2nd quadrant
+  else if (whole_quads == 1) {
+    //cover up quad 4
+    //this draws a rectangle with upperleft hand corner at orgin with size = r
+    display1.fillRect(198 + display_num, 240, 180, 180, RA8875_WHITE);
+    //cover up quad 3
+    //this draws a rectangle with upperleft hand corner at location of theta = pi with size = r
+    display1.fillRect(18 + display_num, 240, 180, 180, RA8875_WHITE);
+  }
+  //in this case we only cover up the 4th quadrant
+  else if (whole_quads == 2) {
+    //cover up quad 4
+    //this draws a rectangle with upperleft hand corner at orgin with size = r
+    display1.fillRect(198 + display_num, 240, 180, 180, RA8875_WHITE);
+  }
+  //return the angle at which the fraction starts, which is equal to our angle of cut
+  return (thi);
 }
 // ##################################################################### //
 // ############## CORRECT AND INCORRECT DISPLAY FUNCTIONS ############## //

@@ -67,11 +67,13 @@ void FracComp::evalAnswer(int numer1, int numer2, int denom1, int denom2) {
   //1 is left button 2 is right button
   int button_pressed = 0;
   while (button_pressed == 0) {
+    /* this is for testing if buttons worked
     Serial.println("Entered LOOP");
     Serial.println("Left Button Is Reading");
     Serial.println(digitalRead(left_button));
     Serial.println("Right Button Is Reading");
     Serial.println(digitalRead(right_button));
+    */
     if (digitalRead(left_button) == LOW) {
       button_pressed = 1;
     } else if (digitalRead(right_button) == LOW) {
@@ -97,12 +99,16 @@ void FracComp::evalAnswer(int numer1, int numer2, int denom1, int denom2) {
 }
 
 void FracComp::testerFunc() {
-  int denom1[2] = {4,5};
-  int denom2[2] = {5,7};
-  screen.formatCompare();
+  //int denom1[2] = {4,5};
+  //int denom2[2] = {5,7};
   //screen.dispSquareFrac(9, denom1, LEFT);
   //screen.dispSquareFrac(24, denom2, RIGHT);
-  screen.dispCircleFrac(1, 6, LEFT);
-  screen.dispCircleFrac(1, 8, RIGHT);
-  delay(10000);
+  for (int denom = 2; denom < 25; denom++) {
+    for (int numer = 1; numer <= denom; numer++) {
+      screen.formatCompare();
+      screen.dispCircleFrac(numer, denom, LEFT);
+      screen.dispFrac(numer, denom, RIGHT);
+      delay(100);
+    }
+  }
 }
