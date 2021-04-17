@@ -37,7 +37,7 @@ class FracComp {
     //accepted values for diff 2 are 3,5-12
     int diff_2_denoms[9] = {3,5,6,7,7,9,10,11,12};
     //accepted values for diff 3 are 11-25
-    int diff_3_denoms[15] = {11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}
+    int diff_3_denoms[15] = {11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
 
     /*these are the denomiantors that can be displayed in a square fashion of diffculty 1, 2, or 3
     these operator as a list of dimensions with each denominator residing in a specific column .

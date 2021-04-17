@@ -23,30 +23,64 @@ FracComp::FracComp(int left_pin, int right_pin) {
 // ################ VERSUS LEVEL 1 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
 void FracComp::dispDiff_1_1() {
-  //generate random index between 0 and 5
-  int rand_index = random(5);
-  //getting denominator from the list of accepted denoms using a random index value
-  int denominator = diff_1_denoms[rand_index];
+  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
+  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
+  //into and integer we will never get a value = length of array for the index since that would cause a problem,
+  //by being to big
+  int left_denominator = diff_1_denoms[random(5)];
+  int right_denominator = diff_1_denoms[random(5)];
 
   //declare the numerators
   int left_numerator;
   int right_numerator;
   //genrate the numerators
-  makeNumer(left_numerator, right_numerator, denominator, denominator);
+  makeNumer(left_numerator, right_numerator, left_denominator, right_denominator);
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispFrac(left_numerator, denominator, LEFT);
-  screen.dispFrac(right_numerator, denominator, RIGHT);
+  screen.dispFrac(left_numerator, left_denominator, LEFT);
+  screen.dispFrac(right_numerator, right_denominator, RIGHT);
 
   //evaluate the useres answer
-  evalAnswer(left_numerator, right_numerator, denominator, denominator);
+  evalAnswer(left_numerator, right_numerator, left_denominator, right_denominator);
 }
 void FracComp::dispDiff_2_1() {
+  //generate the random denominators based upon the accepted values for this diffculty
+  int left_denominator = diff_2_denoms[random(9)];
+  int right_denominator = diff_2_denoms[random(9)];
 
+  //declare the numerators
+  int left_numerator;
+  int right_numerator;
+  //genrate the numerators
+  makeNumer(left_numerator, right_numerator, left_denominator, right_denominator);
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(left_numerator, left_denominator, LEFT);
+  screen.dispFrac(right_numerator, right_denominator, RIGHT);
+
+  //evaluate the useres answer
+  evalAnswer(left_numerator, right_numerator, left_denominator, right_denominator);
 }
 void FracComp::dispDiff_3_1() {
+  //generate the random denominators based upon the accepted values for this diffculty
+  int left_denominator = diff_3_denoms[random(15)];
+  int right_denominator = diff_3_denoms[random(15)];
 
+  //declare the numerators
+  int left_numerator;
+  int right_numerator;
+  //genrate the numerators
+  makeNumer(left_numerator, right_numerator, left_denominator, right_denominator);
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(left_numerator, left_denominator, LEFT);
+  screen.dispFrac(right_numerator, right_denominator, RIGHT);
+
+  //evaluate the useres answer
+  evalAnswer(left_numerator, right_numerator, left_denominator, right_denominator);
 }
 
 // ##################################################################### //
@@ -91,6 +125,7 @@ void FracComp::dispDiff_3_4() {
 // ##################################################################### //
 // ################ VERSUS LEVEL 5 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
+
 void FracComp::dispDiff_1_5() {
 
 }
@@ -104,14 +139,91 @@ void FracComp::dispDiff_3_5() {
 // ##################################################################### //
 // ################ VERSUS LEVEL 6 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
-void FracComp::dispDiff_1_6() {
 
+//for these functions well always have circle on the left and sqaure on the right
+void FracComp::dispDiff_1_6() {
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom = diff_1_denoms[random(5)];
+  
+  //genrate the sqaure denom by copying the 1st and second row of a random column
+  //for this we need 1 static column index
+  int column_index = random(9);
+  int square_denom[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
+
+  //declare the numerators
+  int circle_numer;
+  int sqaure_numer;
+
+  //make the numerators
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  makeNumer(circle_numer, sqaure_numer, circle_denom, square_denom[0] * square_denom[1]);
+
+  //display the fractions
+  screen.formatCompare();
+  screen.dispCircleFrac(circle_numer, circle_denom, LEFT);
+  screen.dispSquareFrac(sqaure_numer, square_denom, RIGHT);
+
+  //evaluate the answers
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  evalAnswer(circle_numer, sqaure_numer, circle_denom, square_denom[0] * square_denom[1]);
 }
 void FracComp::dispDiff_2_6() {
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom = diff_2_denoms[random(9)];
+  
+  //genrate the sqaure denom by copying the 1st and second row of a random column
+  //for this we need 1 static column index
+  int column_index = random(9);
+  int square_denom[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
 
+  //declare the numerators
+  int circle_numer;
+  int sqaure_numer;
+
+  //make the numerators
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  makeNumer(circle_numer, sqaure_numer, circle_denom, square_denom[0] * square_denom[1]);
+
+  //display the fractions
+  screen.formatCompare();
+  screen.dispCircleFrac(circle_numer, circle_denom, LEFT);
+  screen.dispSquareFrac(sqaure_numer, square_denom, RIGHT);
+
+  //evaluate the answers
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  evalAnswer(circle_numer, sqaure_numer, circle_denom, square_denom[0] * square_denom[1]);
 }
 void FracComp::dispDiff_3_6() {
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom = diff_3_denoms[random(15)];
+  
+  //genrate the sqaure denom by copying the 1st and second row of a random column
+  //for this we need 1 static column index
+  int column_index = random(9);
+  int square_denom[2] = {diff_3_sq[0][column_index], diff_3_sq[1][column_index]};
 
+  //declare the numerators
+  int circle_numer;
+  int sqaure_numer;
+
+  //make the numerators
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  makeNumer(circle_numer, sqaure_numer, circle_denom, square_denom[0] * square_denom[1]);
+
+  //display the fractions
+  screen.formatCompare();
+  screen.dispCircleFrac(circle_numer, circle_denom, LEFT);
+  screen.dispSquareFrac(sqaure_numer, square_denom, RIGHT);
+
+  //evaluate the answers
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  evalAnswer(circle_numer, sqaure_numer, circle_denom, square_denom[0] * square_denom[1]);
 }
 
 // ##################################################################### //
