@@ -79,10 +79,44 @@ void FracComp::dispDiff_3_3() {
 // ################ VERSUS LEVEL 4 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
 void FracComp::dispDiff_1_4() {
+  //generate random index between 0 and 5
+  int rand_index = random(5);
+  //getting denominator from the list of accepted denoms using a random index value
+  int denominator = diff_1_denoms[rand_index];
 
+  //declare the numerators
+  int left_numerator;
+  int right_numerator;
+  //genrate the numerators
+  makeNumer(left_numerator, right_numerator, denominator, denominator);
+
+  //reformat and print the fractions represented as squares to the screen
+  screen.formatCompare();
+  screen.dispSquareFrac(left_numerator, denominator, LEFT);
+  screen.dispSquareFrac(right_numerator, denominator, RIGHT);
+
+  //evaluate the users answer
+  evalAnswer(left_numerator, right_numerator, denominator, denominator);
 }
 void FracComp::dispDiff_2_4() {
+  //generate random index between 0 and 9
+  int rand_index = random(9);
+  //getting denominator from the list of accepted denoms using a random index value
+  int denominator = diff_2_denoms[rand_index];
 
+  //declare the numerators
+  int left_numerator;
+  int right_numerator;
+  //genrate the numerators
+  makeNumer(left_numerator, right_numerator, denominator, denominator);
+
+  //reformat and print the fractions represented as squares to the screen
+  screen.formatCompare();
+  screen.dispSquareFrac(left_numerator, denominator, LEFT);
+  screen.dispSquareFrac(right_numerator, denominator, RIGHT);
+
+  //evaluate the users answer
+  evalAnswer(left_numerator, right_numerator, denominator, denominator);
 }
 void FracComp::dispDiff_3_4() {
 
