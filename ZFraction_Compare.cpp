@@ -11,7 +11,7 @@ have all the rules for diffculty stored inside of its self.
 #define LEFT 0
 #define RIGHT 405
 
-
+//Construtor
 FracComp::FracComp(int left_pin, int right_pin) {
   left_button = left_pin;
   right_button = right_pin;
@@ -19,7 +19,10 @@ FracComp::FracComp(int left_pin, int right_pin) {
   pinMode(right_button, INPUT_PULLUP);
 }
 
-void FracComp::dispDiff1_1() {
+// ##################################################################### //
+// ################ VERSUS LEVEL 1 FUNCTION DEFINITIONS ################ //
+// ##################################################################### //
+void FracComp::dispDiff_1_1() {
   //generate random index between 0 and 5
   int rand_index = random(5);
   //getting denominator from the list of accepted denoms using a random index value
@@ -29,7 +32,6 @@ void FracComp::dispDiff1_1() {
   int left_numerator;
   int right_numerator;
   //genrate the numerators
-  //Function is currently bugged will bug fix when i have the chance
   makeNumer(left_numerator, right_numerator, denominator, denominator);
 
   //reformat and print the fractions to the screen
@@ -40,9 +42,81 @@ void FracComp::dispDiff1_1() {
   //evaluate the useres answer
   evalAnswer(left_numerator, right_numerator, denominator, denominator);
 }
+void FracComp::dispDiff_2_1() {
+
+}
+void FracComp::dispDiff_3_1() {
+
+}
+
+// ##################################################################### //
+// ################ VERSUS LEVEL 2 FUNCTION DEFINITIONS ################ //
+// ##################################################################### //
 void FracComp::dispDiff_1_2() {
 
 }
+void FracComp::dispDiff_2_2() {
+
+}
+void FracComp::dispDiff_3_2() {
+
+}
+
+// ##################################################################### //
+// ################ VERSUS LEVEL 3 FUNCTION DEFINITIONS ################ //
+// ##################################################################### //
+void FracComp::dispDiff_1_3() {
+
+}
+void FracComp::dispDiff_2_3() {
+
+}
+void FracComp::dispDiff_3_3() {
+
+}
+
+// ##################################################################### //
+// ################ VERSUS LEVEL 4 FUNCTION DEFINITIONS ################ //
+// ##################################################################### //
+void FracComp::dispDiff_1_4() {
+
+}
+void FracComp::dispDiff_2_4() {
+
+}
+void FracComp::dispDiff_3_4() {
+
+}
+
+// ##################################################################### //
+// ################ VERSUS LEVEL 5 FUNCTION DEFINITIONS ################ //
+// ##################################################################### //
+void FracComp::dispDiff_1_5() {
+
+}
+void FracComp::dispDiff_2_5() {
+
+}
+void FracComp::dispDiff_3_5() {
+
+}
+
+// ##################################################################### //
+// ################ VERSUS LEVEL 6 FUNCTION DEFINITIONS ################ //
+// ##################################################################### //
+void FracComp::dispDiff_1_6() {
+
+}
+void FracComp::dispDiff_2_6() {
+
+}
+void FracComp::dispDiff_3_6() {
+
+}
+
+// ##################################################################### //
+// ############# OTHER METHOD DEFINITIONS IN THE COMP CLASS ############ //
+// ##################################################################### //
 void FracComp::makeNumer(int &numer1, int &numer2, int denom1, int denom2) {
   //make random numerators
   numer1 = random(0, denom1 + 1);
