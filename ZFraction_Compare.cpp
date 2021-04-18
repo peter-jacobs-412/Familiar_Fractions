@@ -269,7 +269,7 @@ void FracComp::dispDiff_1_5() {
   //evaluate the answers
   //note that here we pass the right denominator as the product of the two dimensions of,
   //the square denominator since in essence that is the value of the sqaure denominator
-  evalAnswer(circle_numer1, circle_numer2, circle_denom, circle_denom);
+  evalAnswer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
 
 }
 void FracComp::dispDiff_2_5() {
