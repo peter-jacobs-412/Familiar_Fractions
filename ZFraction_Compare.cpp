@@ -248,12 +248,79 @@ void FracComp::dispDiff_3_4() {
 // ##################################################################### //
 
 void FracComp::dispDiff_1_5() {
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom1 = diff_1_denoms[random(5)];
+  int circle_denom2 = diff_1_denoms[random(5)];
+
+  //declare the numerators
+  int circle_numer1;
+  int circle_numer2;
+
+  //make the numerators
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  makeNumer(circle_numer1, circle_numer2;, circle_denom1, circle_denom2);
+
+  //display the fractions
+  screen.formatCompare();
+  screen.dispCircleFrac(circle_numer1, circle_denom1, LEFT);
+  screen.dispCircleFrac(circle_numer2, circle_denom2, RIGHT);
+
+  //evaluate the answers
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  evalAnswer(circle_numer1, circle_numer2, circle_denom, circle_denom);
 
 }
 void FracComp::dispDiff_2_5() {
+    //generate the circle denominator from its list of avaible denominators
+  int circle_denom1 = diff_2_denoms[random(9)];
+  int circle_denom2 = diff_2_denoms[random(9)];
+
+  //declare the numerators
+  int circle_numer1;
+  int circle_numer2;
+
+  //make the numerators
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  makeNumer(circle_numer1, circle_numer2;, circle_denom, circle_denom);
+
+  //display the fractions
+  screen.formatCompare();
+  screen.dispCircleFrac(circle_numer1, circle_denom1, LEFT);
+  screen.dispCircleFrac(circle_numer2, circle_denom2, RIGHT);
+
+  //evaluate the answers
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  evalAnswer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
 
 }
 void FracComp::dispDiff_3_5() {
+  void FracComp::dispDiff_2_5() {
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom1 = diff_3_denoms[random(15)];
+  int circle_denom2 = diff_3_denoms[random(15)];
+
+  //declare the numerators
+  int circle_numer1;
+  int circle_numer2;
+
+  //make the numerators
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  makeNumer(circle_numer1, circle_numer2;, circle_denom, circle_denom);
+
+  //display the fractions
+  screen.formatCompare();
+  screen.dispCircleFrac(circle_numer1, circle_denom1, LEFT);
+  screen.dispCircleFrac(circle_numer2, circle_denom2, RIGHT);
+
+  //evaluate the answers
+  //note that here we pass the right denominator as the product of the two dimensions of,
+  //the square denominator since in essence that is the value of the sqaure denominator
+  evalAnswer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
 
 }
 
