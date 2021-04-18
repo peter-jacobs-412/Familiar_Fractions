@@ -161,12 +161,82 @@ void FracComp::dispDiff_3_2() {
 // ################ VERSUS LEVEL 3 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
 void FracComp::dispDiff_1_3() {
+  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
+  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
+  //into and integer we will never get a value = length of array for the index since that would cause a problem,
+  //by being to big
+  int left_denominator = diff_1_denoms[random(5)];
+  
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom = diff_1_denoms[random(5)];
+
+  //declare the numerators
+  int left_numerator;
+  int circle_numer;
+  
+  //genrate the numerators
+  makeNumer(left_numerator, circle_numer, left_denominator, circle_denom);
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(left_numerator, left_denominator, LEFT);
+  screen.dispFrac(circle_numer, circle_denom, RIGHT);
+
+  //evaluate the useres answer
+  evalAnswer(left_numerator, circle_numer, left_denominator, circle_denom);
 
 }
 void FracComp::dispDiff_2_3() {
+  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
+  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
+  //into and integer we will never get a value = length of array for the index since that would cause a problem,
+  //by being to big
+  int left_denominator = diff_2_denoms[random(9)];
+  
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom = diff_2_denoms[random(9)];
+
+  //declare the numerators
+  int left_numerator;
+  int circle_numer;
+  
+  //generate the numerators
+  makeNumer(left_numerator, circle_numer, left_denominator, circle_denom);
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(left_numerator, left_denominator, LEFT);
+  screen.dispFrac(circle_numer, circle_denom, RIGHT);
+
+  //evaluate the user's answer
+  evalAnswer(left_numerator, circle_numer, left_denominator, circle_denom);
+  
 
 }
 void FracComp::dispDiff_3_3() {
+  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
+  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
+  //into and integer we will never get a value = length of array for the index since that would cause a problem,
+  //by being to big
+  int left_denominator = diff_3_denoms[random(15)];
+  
+  //generate the circle denominator from its list of avaible denominators
+  int circle_denom = diff_3_denoms[random(15)];
+
+  //declare the numerators
+  int left_numerator;
+  int circle_numer;
+  
+  //genrate the numerators
+  makeNumer(left_numerator, circle_numer, left_denominator, circle_denom);
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(left_numerator, left_denominator, LEFT);
+  screen.dispFrac(circle_numer, circle_denom, RIGHT);
+
+  //evaluate the useres answer
+  evalAnswer(left_numerator, circle_numer, left_denominator, circle_denom);
 
 }
 
