@@ -61,6 +61,20 @@ void loop() {
   delay(2500);
   compare.dispDiff_3_1();
   delay(2500);
+  //testing V=2
+  compare.dispDiff_1_2();
+  delay(2500);
+  compare.dispDiff_2_2();
+  delay(2500);
+  compare.dispDiff_3_2();
+  delay(2500);
+  //testing v=4
+  compare.dispDiff_1_4();
+  delay(2500);
+  compare.dispDiff_2_4();
+  delay(2500);
+  compare.dispDiff_3_4();
+  delay(2500);
   //testing V=6
   compare.dispDiff_1_6();
   delay(2500);

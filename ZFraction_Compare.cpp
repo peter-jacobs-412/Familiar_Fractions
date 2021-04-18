@@ -90,71 +90,71 @@ void FracComp::dispDiff_1_2() {
   //left number denominator
   int left_denominator = diff_1_denoms[random(5)];
   //right square denominator
-  column_index = random(9);
+  int column_index = random(4);
   int square_denom[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
   
   //declare the numerators
   int left_numerator;
   int square_numerator;
   //genrate the numerators
-  makeNumer(left_numerator, sqaure_numerator, left_denominator, square_denom[0] * square_denom[1]);
+  makeNumer(left_numerator, square_numerator, left_denominator, square_denom[0] * square_denom[1]);
   
   //reformat and print the numerical fraction to the screen
   screen.formatCompare();
   screen.dispFrac(left_numerator, left_denominator, LEFT);
   
   //reformat and print the square fraction to the screen
-  screen.dispSquareFrac(right_numerator, square_denom, RIGHT);
+  screen.dispSquareFrac(square_numerator, square_denom, RIGHT);
   
   //evaluate users answer
-  evalAnswer(left_numerator, sqaure_numerator, left_denominator, square_denom[0] * square_denom[1]);
+  evalAnswer(left_numerator, square_numerator, left_denominator, square_denom[0] * square_denom[1]);
   
 }
 void FracComp::dispDiff_2_2() {
   //left number denominator
   int left_denominator = diff_2_denoms[random(9)];
   //right square denominator
-  column_index = random(9);
+  int column_index = random(8);
   int square_denom[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
   
   //declare the numerators
   int left_numerator;
   int square_numerator;
   //genrate the numerators
-  makeNumer(left_numerator, sqaure_numerator, left_denominator, square_denom[0] * square_denom[1]);
+  makeNumer(left_numerator, square_numerator, left_denominator, square_denom[0] * square_denom[1]);
   
   //reformat and print the numerical fraction to the screen
   screen.formatCompare();
   screen.dispFrac(left_numerator, left_denominator, LEFT);
   
   //reformat and print the square fraction to the screen
-  screen.dispSquareFrac(right_numerator, square_denom, RIGHT);
+  screen.dispSquareFrac(square_numerator, square_denom, RIGHT);
   
   //evaluate users answer
-  evalAnswer(left_numerator, sqaure_numerator, left_denominator, square_denom[0] * square_denom[1]);
+  evalAnswer(left_numerator, square_numerator, left_denominator, square_denom[0] * square_denom[1]);
 }
 void FracComp::dispDiff_3_2() {
   //left number denominator
   int left_denominator = diff_3_denoms[random(15)];
   //right square denominator
-  column_index = random(9);
+  int column_index = random(9);
   int square_denom[2] = {diff_3_sq[0][column_index], diff_3_sq[1][column_index]};
   
   //declare the numerators
   int left_numerator;
   int square_numerator;
   //genrate the numerators
-  makeNumer(left_numerator, sqaure_numerator, left_denominator, square_denom[0] * square_denom[1]);
+  makeNumer(left_numerator, square_numerator, left_denominator, square_denom[0] * square_denom[1]);
   
   //reformat and print the numerical fraction to the screen
   screen.formatCompare();
   screen.dispFrac(left_numerator, left_denominator, LEFT);
   
   //reformat and print the square fraction to the screen
-  screen.dispSquareFrac(right_numerator, square_denom, RIGHT);
+  screen.dispSquareFrac(square_numerator, square_denom, RIGHT);
   
   //evaluate users answer
-  evalAnswer(left_numerator, sqaure_numerator, left_denominator, square_denom[0] * square_denom[1]);
+  evalAnswer(left_numerator, square_numerator, left_denominator, square_denom[0] * square_denom[1]);
 }
 
 // ##################################################################### //
@@ -175,11 +175,11 @@ void FracComp::dispDiff_3_3() {
 // ##################################################################### //
 void FracComp::dispDiff_1_4() {
   //left square denominator
-  int column_index = random(9);
+  int column_index = random(4);
   int square_denom1[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
   
   //right square denominator
-  column_index = random(9);
+  column_index = random(4);
   int square_denom2[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
 
   //declare the numerators
@@ -198,11 +198,11 @@ void FracComp::dispDiff_1_4() {
 }
 void FracComp::dispDiff_2_4() {
   //left square denominator
-  int column_index = random(9);
+  int column_index = random(8);
   int square_denom1[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
   
   //right square denominator
-  column_index = random(9);
+  column_index = random(8);
   int square_denom2[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
 
   //declare the numerators
@@ -268,7 +268,7 @@ void FracComp::dispDiff_1_6() {
   
   //genrate the sqaure denom by copying the 1st and second row of a random column
   //for this we need 1 static column index
-  int column_index = random(9);
+  int column_index = random(4);
   int square_denom[2] = {diff_1_sq[0][column_index], diff_1_sq[1][column_index]};
 
   //declare the numerators
@@ -296,7 +296,7 @@ void FracComp::dispDiff_2_6() {
   
   //genrate the sqaure denom by copying the 1st and second row of a random column
   //for this we need 1 static column index
-  int column_index = random(9);
+  int column_index = random(8);
   int square_denom[2] = {diff_2_sq[0][column_index], diff_2_sq[1][column_index]};
 
   //declare the numerators
