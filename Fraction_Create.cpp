@@ -133,9 +133,33 @@ double getUserGuess(bool isSlider)
 //function to get value of the encoder
 void measureEncoder()
 {
+        int rotation = digitalRead(clk);
+    int value;
     while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW)
     {
-        
+           
+  
+     value = digitalRead(clk);
+     if (value != rotation){ // we use the DT pin to find out which way we turning.
+     if (digitalRead(DT) != value) {  // Clockwise
+        if (encoderVal<20)
+        {
+           encoderVal ++; 
+           screen.dispCircleFrac(encoderVal,20,RIGHT);
+        }
+       
+     } else { //Counterclockwise
+      if (encoderVal>0)
+      {
+         encoderVal--;
+        screen.dispCircleFrac(encoderVal,20,RIGHT);
+      }
+       
+     }
+     // this will print in the serial monitor.
+     
+   } 
+   rotation = value;
     }
 }
 
