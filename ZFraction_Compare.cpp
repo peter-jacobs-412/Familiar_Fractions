@@ -161,83 +161,64 @@ void FracComp::dispDiff_3_2() {
 // ################ VERSUS LEVEL 3 FUNCTION DEFINITIONS ################ //
 // ##################################################################### //
 void FracComp::dispDiff_1_3() {
-  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
-  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
-  //into and integer we will never get a value = length of array for the index since that would cause a problem,
-  //by being to big
-  int left_denominator = diff_1_denoms[random(5)];
-  
-  //generate the circle denominator from its list of avaible denominators
-  int circle_denom = diff_1_denoms[random(5)];
+  //generate two random denominators
+  int left_denom = diff_1_denoms[random(5)];
+  int right_denom = diff_1_denoms[random(55)];
 
   //declare the numerators
-  int left_numerator;
-  int circle_numer;
-  
+  int left_numer;
+  int right_numer;
   //genrate the numerators
-  makeNumer(left_numerator, circle_numer, left_denominator, circle_denom);
+  makeNumer(left_numer, left_numer, right_denom, right_denom);
 
   //reformat and print the fractions to the screen
+  //display numerical fraction on left and circle on right
   screen.formatCompare();
-  screen.dispFrac(left_numerator, left_denominator, LEFT);
-  screen.dispFrac(circle_numer, circle_denom, RIGHT);
+  screen.dispFrac(left_numer, left_denom, LEFT);
+  screen.dispCircleFrac(right_numer, right_denom, RIGHT);
 
   //evaluate the useres answer
-  evalAnswer(left_numerator, circle_numer, left_denominator, circle_denom);
-
+  evalAnswer(left_numer, right_numer, left_denom, right_denom);
 }
 void FracComp::dispDiff_2_3() {
-  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
-  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
-  //into and integer we will never get a value = length of array for the index since that would cause a problem,
-  //by being to big
-  int left_denominator = diff_2_denoms[random(9)];
-  
-  //generate the circle denominator from its list of avaible denominators
-  int circle_denom = diff_2_denoms[random(9)];
+  //generate two random denominators
+  int left_denom = diff_2_denoms[random(9)];
+  int right_denom = diff_2_denoms[random(9)];
 
   //declare the numerators
-  int left_numerator;
-  int circle_numer;
-  
-  //generate the numerators
-  makeNumer(left_numerator, circle_numer, left_denominator, circle_denom);
-
-  //reformat and print the fractions to the screen
-  screen.formatCompare();
-  screen.dispFrac(left_numerator, left_denominator, LEFT);
-  screen.dispFrac(circle_numer, circle_denom, RIGHT);
-
-  //evaluate the user's answer
-  evalAnswer(left_numerator, circle_numer, left_denominator, circle_denom);
-  
-
-}
-void FracComp::dispDiff_3_3() {
-  //getting denominator from the list of accepted denoms using a random index value from 0 - length of array
-  //-- note that the max index of an array is length - 1 but since random generates a double and thats trucated,
-  //into and integer we will never get a value = length of array for the index since that would cause a problem,
-  //by being to big
-  int left_denominator = diff_3_denoms[random(15)];
-  
-  //generate the circle denominator from its list of avaible denominators
-  int circle_denom = diff_3_denoms[random(15)];
-
-  //declare the numerators
-  int left_numerator;
-  int circle_numer;
-  
+  int left_numer;
+  int right_numer;
   //genrate the numerators
-  makeNumer(left_numerator, circle_numer, left_denominator, circle_denom);
+  makeNumer(left_numer, left_numer, right_denom, right_denom);
 
   //reformat and print the fractions to the screen
+  //display numerical fraction on left and circle on right
   screen.formatCompare();
-  screen.dispFrac(left_numerator, left_denominator, LEFT);
-  screen.dispFrac(circle_numer, circle_denom, RIGHT);
+  screen.dispFrac(left_numer, left_denom, LEFT);
+  screen.dispCircleFrac(right_numer, right_denom, RIGHT);
 
   //evaluate the useres answer
-  evalAnswer(left_numerator, circle_numer, left_denominator, circle_denom);
+  evalAnswer(left_numer, right_numer, left_denom, right_denom);
+}
+void FracComp::dispDiff_3_3() {
+  //generate two random denominators
+  int left_denom = diff_3_denoms[random(15)];
+  int right_denom = diff_3_denoms[random(15)];
 
+  //declare the numerators
+  int left_numer;
+  int right_numer;
+  //genrate the numerators
+  makeNumer(left_numer, left_numer, right_denom, right_denom);
+
+  //reformat and print the fractions to the screen
+  //display numerical fraction on left and circle on right
+  screen.formatCompare();
+  screen.dispFrac(left_numer, left_denom, LEFT);
+  screen.dispCircleFrac(right_numer, right_denom, RIGHT);
+
+  //evaluate the useres answer
+  evalAnswer(left_numer, right_numer, left_denom, right_denom);
 }
 
 // ##################################################################### //
@@ -327,9 +308,7 @@ void FracComp::dispDiff_1_5() {
   int circle_numer2;
 
   //make the numerators
-  //note that here we pass the right denominator as the product of the two dimensions of,
-  //the square denominator since in essence that is the value of the sqaure denominator
-  makeNumer(circle_numer1, circle_numer2;, circle_denom1, circle_denom2);
+  makeNumer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
 
   //display the fractions
   screen.formatCompare();
@@ -337,24 +316,18 @@ void FracComp::dispDiff_1_5() {
   screen.dispCircleFrac(circle_numer2, circle_denom2, RIGHT);
 
   //evaluate the answers
-  //note that here we pass the right denominator as the product of the two dimensions of,
-  //the square denominator since in essence that is the value of the sqaure denominator
   evalAnswer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
-
 }
 void FracComp::dispDiff_2_5() {
-    //generate the circle denominator from its list of avaible denominators
+  //generate the circle denominator from its list of avaible denominators
   int circle_denom1 = diff_2_denoms[random(9)];
   int circle_denom2 = diff_2_denoms[random(9)];
 
   //declare the numerators
   int circle_numer1;
   int circle_numer2;
-
   //make the numerators
-  //note that here we pass the right denominator as the product of the two dimensions of,
-  //the square denominator since in essence that is the value of the sqaure denominator
-  makeNumer(circle_numer1, circle_numer2;, circle_denom, circle_denom);
+  makeNumer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
 
   //display the fractions
   screen.formatCompare();
@@ -362,13 +335,9 @@ void FracComp::dispDiff_2_5() {
   screen.dispCircleFrac(circle_numer2, circle_denom2, RIGHT);
 
   //evaluate the answers
-  //note that here we pass the right denominator as the product of the two dimensions of,
-  //the square denominator since in essence that is the value of the sqaure denominator
   evalAnswer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
-
 }
 void FracComp::dispDiff_3_5() {
-  void FracComp::dispDiff_2_5() {
   //generate the circle denominator from its list of avaible denominators
   int circle_denom1 = diff_3_denoms[random(15)];
   int circle_denom2 = diff_3_denoms[random(15)];
@@ -376,11 +345,8 @@ void FracComp::dispDiff_3_5() {
   //declare the numerators
   int circle_numer1;
   int circle_numer2;
-
   //make the numerators
-  //note that here we pass the right denominator as the product of the two dimensions of,
-  //the square denominator since in essence that is the value of the sqaure denominator
-  makeNumer(circle_numer1, circle_numer2;, circle_denom, circle_denom);
+  makeNumer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
 
   //display the fractions
   screen.formatCompare();
@@ -388,10 +354,7 @@ void FracComp::dispDiff_3_5() {
   screen.dispCircleFrac(circle_numer2, circle_denom2, RIGHT);
 
   //evaluate the answers
-  //note that here we pass the right denominator as the product of the two dimensions of,
-  //the square denominator since in essence that is the value of the sqaure denominator
   evalAnswer(circle_numer1, circle_numer2, circle_denom1, circle_denom2);
-
 }
 
 // ##################################################################### //
