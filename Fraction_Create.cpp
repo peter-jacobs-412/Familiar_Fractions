@@ -141,7 +141,7 @@ void FracCreate::measureEncoder()
   
      value = digitalRead(clk);
      if (value != rotation){ // we use the DT pin to find out which way we turning.
-     if (digitalRead(DT) != value) {  // Clockwise
+     if (digitalRead(dt) != value) {  // Clockwise
         if (encoderVal<20)
         {
            encoderVal ++; 
