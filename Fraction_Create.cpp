@@ -406,10 +406,9 @@ double FracCreate::getUserGuess(bool isSlider)
     }
     else
     {
-        return 1.0*encoderVal/20.0;
+        return 1.0*encoderVal/40.0;
     }
 }
-
 //function to get value of the encoder
 void FracCreate::measureEncoder()
 {
@@ -422,17 +421,17 @@ void FracCreate::measureEncoder()
      value = digitalRead(clk);
      if (value != rotation){ // we use the DT pin to find out which way we turning.
      if (digitalRead(dt) != value) {  // Clockwise
-        if (encoderVal<20)
+        if (encoderVal<40)
         {
            encoderVal ++; 
-           screen.dispCircleFrac(encoderVal,20,RIGHT);
+           screen.dispCircleFrac(encoderVal,40,RIGHT);
         }
        
      } else { //Counterclockwise
         if(encoderVal>0)
         {
             encoderVal--;
-        screen.dispCircleFrac(encoderVal,20,RIGHT);
+        screen.dispCircleFrac(encoderVal,40,RIGHT);
         }
        
      }
