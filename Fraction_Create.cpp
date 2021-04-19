@@ -37,7 +37,7 @@ void FracCreate::dispDiff1_1()
   screen.dispFrac(numerator, denominator, LEFT);
 
   //evaluate the useres answer
-  evalAnswer(numerator, denominator);
+  evalAnswer(true,numerator, denominator);
     
 }
 
@@ -58,8 +58,288 @@ void FracCreate::dispDiff1_2()
   screen.dispFrac(numerator, denominator, LEFT);
 
   //evaluate the useres answer
-  evalAnswer(numerator, denominator);
+  evalAnswer(false,numerator, denominator);
     
+}
+//square to linear
+void FracCreate::dispDiff1_3()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(5);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_1_sq[0][rand_index]*diff_1_sq[1][rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispSqareFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//square to circle
+void FracCreate::dispDiff1_4()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(5);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_1_sq[0][rand_index]*diff_1_sq[1][rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispSqareFrac(numerator, denominator, LEFT);
+  //evaluate the useres answer
+  evalAnswer(false,numerator, denominator);
+    
+}
+//circle to linear
+void FracCreate::dispDiff1_5()
+{
+     //generate random index between 0 and 5
+  int rand_index = random(5);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_1_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispCircleFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//number to circle
+void FracCreate::dispDiff1_6()
+{
+    dispDiff1_5(); 
+}
+
+//number to linear
+void FracCreate::dispDiff2_1()
+{
+     //generate random index between 0 and 5
+  int rand_index = random(9);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_2_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//number to circle
+void FracCreate::dispDiff2_2()
+{
+     //generate random index between 0 and 5
+  int rand_index = random(9);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_2_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(false,numerator, denominator);
+    
+}
+//square to linear
+void FracCreate::dispDiff2_3()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(9);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_2_sq[0][rand_index]*diff_2_sq[1][rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispSqareFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//square to circle
+void FracCreate::dispDiff2_4()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(9);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_2_sq[0][rand_index]*diff_2_sq[1][rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispSqareFrac(numerator, denominator, LEFT);
+  //evaluate the useres answer
+  evalAnswer(false,numerator, denominator);
+    
+}
+//circle to linear
+void FracCreate::dispDiff2_5()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(9);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_2_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispCircleFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//number to circle
+void FracCreate::dispDiff2_6()
+{
+    dispDiff2_5(); 
+}//number to linear
+void FracCreate::dispDiff3_1()
+{
+     //generate random index between 0 and 5
+  int rand_index = random(15);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_3_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//number to circle
+void FracCreate::dispDiff3_2()
+{
+     //generate random index between 0 and 5
+  int rand_index = random(15);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_3_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(false,numerator, denominator);
+    
+}
+//square to linear
+void FracCreate::dispDiff3_3()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(15);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_3_sq[0][rand_index]*diff_3_sq[1][rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispSqareFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//square to circle
+void FracCreate::dispDiff3_4()
+{
+     //generate random index between 0 and 8
+  int rand_index = random(15);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_3_sq[0][rand_index]*diff_3_sq[1][rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispSqareFrac(numerator, denominator, LEFT);
+  //evaluate the useres answer
+  evalAnswer(false,numerator, denominator);
+    
+}
+//circle to linear
+void FracCreate::dispDiff3_5()
+{
+     //generate random index between 0 and 5
+  int rand_index = random(15);
+  //getting denominator from the list of accepted denoms using a random index value
+  denominator = diff_3_denoms[rand_index];
+
+  //declare the numerators
+  int numerator=random(0,denominator+1);
+  
+
+  //reformat and print the fractions to the screen
+  screen.formatCompare();
+  screen.dispCircleFrac(numerator, denominator, LEFT);
+
+  //evaluate the useres answer
+  evalAnswer(true,numerator, denominator);
+    
+}
+
+//number to circle
+void FracCreate::dispDiff3_6()
+{
+    dispDiff3_5(); 
 }
 
 void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
@@ -133,7 +413,7 @@ double FracCreate::getUserGuess(bool isSlider)
 //function to get value of the encoder
 void FracCreate::measureEncoder()
 {
-        int rotation = digitalRead(clk);
+    int rotation = digitalRead(clk);
     int value;
     while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW)
     {
@@ -149,18 +429,19 @@ void FracCreate::measureEncoder()
         }
        
      } else { //Counterclockwise
-      if (encoderVal>0)
-      {
-         encoderVal--;
+        if(encoderVal>0)
+        {
+            encoderVal--;
         screen.dispCircleFrac(encoderVal,20,RIGHT);
-      }
+        }
        
      }
      // this will print in the serial monitor.
      
    } 
    rotation = value;
-    }
+ } 
+    
 }
 
 
