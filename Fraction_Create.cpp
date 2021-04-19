@@ -118,7 +118,7 @@ void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
         }
     
 }
-double getUserGuess(bool isSlider)
+double FracCreate::getUserGuess(bool isSlider)
 {
     if (isSlider)
     {
@@ -131,7 +131,7 @@ double getUserGuess(bool isSlider)
 }
 
 //function to get value of the encoder
-void measureEncoder()
+void FracCreate::measureEncoder()
 {
         int rotation = digitalRead(clk);
     int value;
