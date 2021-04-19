@@ -163,13 +163,13 @@ void FracComp::dispDiff_3_2() {
 void FracComp::dispDiff_1_3() {
   //generate two random denominators
   int left_denom = diff_1_denoms[random(5)];
-  int right_denom = diff_1_denoms[random(55)];
+  int right_denom = diff_1_denoms[random(5)];
 
   //declare the numerators
   int left_numer;
   int right_numer;
   //genrate the numerators
-  makeNumer(left_numer, left_numer, right_denom, right_denom);
+  makeNumer(left_numer, right_numer, left_denom, right_denom);
 
   //reformat and print the fractions to the screen
   //display numerical fraction on left and circle on right
@@ -189,7 +189,7 @@ void FracComp::dispDiff_2_3() {
   int left_numer;
   int right_numer;
   //genrate the numerators
-  makeNumer(left_numer, left_numer, right_denom, right_denom);
+  makeNumer(left_numer, right_numer, left_denom, right_denom);
 
   //reformat and print the fractions to the screen
   //display numerical fraction on left and circle on right
@@ -209,7 +209,7 @@ void FracComp::dispDiff_3_3() {
   int left_numer;
   int right_numer;
   //genrate the numerators
-  makeNumer(left_numer, left_numer, right_denom, right_denom);
+  makeNumer(left_numer, right_numer, left_denom, right_denom);
 
   //reformat and print the fractions to the screen
   //display numerical fraction on left and circle on right
