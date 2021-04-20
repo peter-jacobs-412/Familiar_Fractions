@@ -424,14 +424,14 @@ void FracCreate::measureEncoder()
         if (encoderVal<40)
         {
            encoderVal ++; 
-           screen.dispCircleFrac(encoderVal,40,RIGHT);
+           screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
         }
        
      } else { //Counterclockwise
         if(encoderVal>0)
         {
             encoderVal--;
-        screen.dispCircleFrac(encoderVal,40,RIGHT);
+        screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
         }
        
      }
