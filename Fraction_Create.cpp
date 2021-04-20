@@ -412,6 +412,7 @@ double FracCreate::getUserGuess(bool isSlider)
 //function to get value of the encoder
 void FracCreate::measureEncoder()
 {
+    screen.dispCircleFrac(0,20,RIGHT);
     int rotation = digitalRead(clk);
     int value;
     while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW)
