@@ -40,8 +40,9 @@ class FracCreate {
     int clk;
     int dt;
     int encoderVal;
+    int denominator;
   public:
-    FracCreate(int clk_pin, int dt_pin, int slider_pin, int left_pin, int right_pin)
+    FracCreate(int clk_pin, int dt_pin, int slider_pin, int left_pin, int right_pin);
     //displays a diffculty one problem
     void dispDiff1_1();
     void dispDiff1_2();
@@ -65,6 +66,6 @@ class FracCreate {
     //used to create acceptable numerators for a fraction problem
     //evaluates whether the user got the answer correct
     void evalAnswer(bool isSlider, int numerator, int denominator);
-    double getUserGuess(bool isSlider)
+    double getUserGuess(bool isSlider);
     void measureEncoder();
 };

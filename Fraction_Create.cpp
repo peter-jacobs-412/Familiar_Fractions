@@ -5,7 +5,7 @@
 #define RIGHT 405
 
 
- int anaRMax=1023;
+ #define anaRMax 1023
 
 FracCreate::FracCreate(int clk_pin, int dt_pin, int slider_pin, int left_pin, int right_pin) {
   left_button = left_pin;
@@ -75,7 +75,7 @@ void FracCreate::dispDiff1_3()
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispSqareFrac(numerator, denominator, LEFT);
+  screen.dispSquareFrac(numerator, denominator, LEFT);
 
   //evaluate the useres answer
   evalAnswer(true,numerator, denominator);
@@ -96,7 +96,7 @@ void FracCreate::dispDiff1_4()
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispSqareFrac(numerator, denominator, LEFT);
+  screen.dispSquareFrac(numerator, denominator, LEFT);
   //evaluate the useres answer
   evalAnswer(false,numerator, denominator);
     
@@ -183,7 +183,7 @@ void FracCreate::dispDiff2_3()
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispSqareFrac(numerator, denominator, LEFT);
+  screen.dispSquareFrac(numerator, denominator, LEFT);
 
   //evaluate the useres answer
   evalAnswer(true,numerator, denominator);
@@ -204,7 +204,7 @@ void FracCreate::dispDiff2_4()
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispSqareFrac(numerator, denominator, LEFT);
+  screen.dispSquareFrac(numerator, denominator, LEFT);
   //evaluate the useres answer
   evalAnswer(false,numerator, denominator);
     
@@ -289,7 +289,7 @@ void FracCreate::dispDiff3_3()
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispSqareFrac(numerator, denominator, LEFT);
+  screen.dispSquareFrac(numerator, denominator, LEFT);
 
   //evaluate the useres answer
   evalAnswer(true,numerator, denominator);
@@ -310,7 +310,7 @@ void FracCreate::dispDiff3_4()
 
   //reformat and print the fractions to the screen
   screen.formatCompare();
-  screen.dispSqareFrac(numerator, denominator, LEFT);
+  screen.dispSquareFrac(numerator, denominator, LEFT);
   //evaluate the useres answer
   evalAnswer(false,numerator, denominator);
     
@@ -345,13 +345,14 @@ void FracCreate::dispDiff3_6()
 void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
 {
     double fraction = (1.0*numerator)/(1.0*denominator);
-    double userGuess, decNumer; //decNum holds user guessed numerator in decimal form
+    double userGuess, decNum; //decNum holds user guessed numerator in decimal form
     int newNum;                 //used when get wrong anser
     
     //wait until they submit an answer using either button
     if (isSlider)
     {
-        while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW){}
+        while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW){
+          }
     }
     else
     {
@@ -362,6 +363,7 @@ void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
 
         //evaluate if got it right or wrong, then display closest fraction to the right
         userGuess=getUserGuess(isSlider);
+        Serial.println(userGuess);
         if (abs(userGuess-fraction)<=0.1)
         {
             screen.dispFrac(numerator,denominator,RIGHT);
@@ -370,7 +372,7 @@ void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
         }
         else
         {
-            decNum=userGuess*denominator);
+            decNum=userGuess*denominator;
             if (round(decNum)!=numerator)
             {
                 newNum=round(decNum);
@@ -389,12 +391,14 @@ void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
                     newNum=numerator*2+1;
                     denominator=denominator*2;
                 }
-            }
-
-            //output
+                //output
             screen.dispFrac(newNum,denominator,RIGHT);
             delay(1000);
+            Serial.println("Wrong");
             screen.dispWrong();
+            }
+
+            
         }
     
 }
@@ -402,6 +406,7 @@ double FracCreate::getUserGuess(bool isSlider)
 {
     if (isSlider)
     {
+        Serial.println(analogRead(slider));
         return analogRead(slider)*1.0/(anaRMax*1.0);
     }
     else
@@ -425,14 +430,14 @@ void FracCreate::measureEncoder()
         if (encoderVal<40)
         {
            encoderVal ++; 
-           screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
+           //screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
         }
        
      } else { //Counterclockwise
         if(encoderVal>0)
         {
             encoderVal--;
-        screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
+        //screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
         }
        
      }
@@ -443,6 +448,3 @@ void FracCreate::measureEncoder()
  } 
     
 }
-
-
-

@@ -2,6 +2,7 @@
 #include "Adafruit_GFX.h"
 #include "Adafruit_RA8875.h"
 #include "ZFraction_Compare.h"
+#include "Fraction_Create.h"
 
 // ====================================================== //
 // =================== PIN DEFINITIONS ================== //
@@ -10,25 +11,40 @@
 //each corelating to one hafl of the dispay with button 1 on the left and button 2 on the right
 #define BUTTONLEFT 22
 #define BUTTONRIGHT 23
+
+//ROTARY ENCODE PINS
+#define ROTARY_CLK 46
+#define ROTARY_DT 47
+#define SLIDER A8
+
 //Pins here are defined as part of the adafruit RA8875 driver board
 #define RA8875_INT 3
 #define RA8875_CS 10
 #define RA8875_RESET 9
-//This pin is used to send singles to the protobit and control the littlebit
-#define PROTO_BIT 25
+
+
 //Pin 13 is onboard LED
 #define ON_BOARD_LED 13
-//starts the display
-Adafruit_RA8875 tft = Adafruit_RA8875(RA8875_CS, RA8875_RESET);
 
-FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
+//declares the display
+Adafruit_RA8875 tft = Adafruit_RA8875(RA8875_CS, RA8875_RESET);
+FracCreate create=FracCreate(ROTARY_CLK,ROTARY_DT,SLIDER,BUTTONLEFT,BUTTONRIGHT);
+//FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
 
 void setup() {
-  //declaring pins used noy by the display
+  //intializing the button pins
   pinMode(BUTTONLEFT, INPUT_PULLUP);
   pinMode(BUTTONRIGHT, INPUT_PULLUP);
-  pinMode(PROTO_BIT, OUTPUT);
+
   pinMode(ON_BOARD_LED, OUTPUT);
+  
+  //intialzing the rotary encode pins
+  pinMode(ROTARY_CLK, INPUT);
+  pinMode(ROTARY_DT,INPUT);
+  pinMode(SLIDER,INPUT_PULLUP);
+
+  
+  //intializing rand seed
   //intializing rand seed
   randomSeed(300);
 
@@ -54,7 +70,8 @@ void setup() {
 }
 
 void loop() {
-  //compare.dispDiff1();
-  //delay(5000);
-  compare.testerFunc();
+  //create.dispDiff1_1();
+  //delay(2500);
+  create.dispDiff1_2();
+  delay(2500);
 }
