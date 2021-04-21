@@ -1,3 +1,6 @@
+#ifndef Display_Custom_Write.h
+#define Display_Custom_Write.h
+
 #include <Arduino.h>
 #include "Adafruit_GFX.h"
 #include "Adafruit_RA8875.h"
@@ -63,3 +66,5 @@ class DisplayCustomWrite {
     //displays to the user they got the problem wrong
     void dispWrong();
 };
+
+#endif Display_Custom_Write
