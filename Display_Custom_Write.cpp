@@ -255,12 +255,19 @@ void DisplayCustomWrite::dispCircleFrac(int numer, int denom, int display_num) {
   dispPolarGrid(denom, intial_angle, display_num);
 }
 void DisplayCustomWrite::dispPolarGrid(int steps, double intial_angle, int display_num) {
+  //find the stepsize
   double step_size = 2.0 * PI / steps;
+  
   //bug testing thing here
   //display1.fillCircle(198 + 180 * cos(intial_angle) + display_num, 240 - 180 * sin(intial_angle), 10, RA8875_RED);
+  
+  //draw the grid
   for (int i = 0; i < steps; i++) {
     display1.drawLine(198 + display_num, 240, 198 + 180 * cos(i * step_size + intial_angle) + display_num, 240 - 180 * sin(i * step_size + intial_angle) , RA8875_BLACK);
   }
+  
+  //display the outer ring of the circle
+  display1.drawCircle(198 + display_num, 240, 180, RA8875_BLACK);
 }
 double DisplayCustomWrite::partialCirleHelper(double theta, int display_num) {
   //holds the number of quarter sections of an arc that theta has
