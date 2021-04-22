@@ -71,6 +71,7 @@ void setup() {
 }
 
 void loop() {
+  
   //compare level 1
   compare.dispDiff_1_1();
   compare.dispDiff_1_2();
@@ -100,7 +101,10 @@ void loop() {
   //ending loop
   while(1) {
     int vs_level = random(6) + 1;
+    Serial.println("HERE");
+    Serial.println(vs_level);
     if (vs_level == 1) {
+      Serial.println("1");
       compare.dispDiff_1_1();
       compare.dispDiff_2_1();
       compare.dispDiff_1_2();
@@ -111,6 +115,7 @@ void loop() {
       create.dispDiff2_1();
       create.dispDiff3_1();
     } else if (vs_level == 2) {
+      Serial.println("2");
       compare.dispDiff_1_2();
       compare.dispDiff_2_2();
       compare.dispDiff_1_3();
@@ -121,6 +126,7 @@ void loop() {
       create.dispDiff2_2();
       create.dispDiff3_2();
     } else if (vs_level == 3) {
+      Serial.println("3");
       compare.dispDiff_1_3();
       compare.dispDiff_2_3();
       compare.dispDiff_1_4();
@@ -131,6 +137,7 @@ void loop() {
       create.dispDiff2_3();
       create.dispDiff3_3();
     } else if (vs_level == 4) {
+      Serial.println("4");
       compare.dispDiff_1_4();
       compare.dispDiff_2_4();
       compare.dispDiff_1_5();
@@ -141,6 +148,7 @@ void loop() {
       create.dispDiff2_4();
       create.dispDiff3_4();
     } else if (vs_level == 5) {
+      Serial.println("5");
       compare.dispDiff_1_5();
       compare.dispDiff_2_5();
       compare.dispDiff_1_6();
@@ -151,6 +159,7 @@ void loop() {
       create.dispDiff2_5();
       create.dispDiff3_5();
     } else if (vs_level == 6) {
+      Serial.println("6");
       compare.dispDiff_1_6();
       compare.dispDiff_2_6();
       compare.dispDiff_1_1();
