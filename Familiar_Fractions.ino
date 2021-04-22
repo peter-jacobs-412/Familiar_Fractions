@@ -30,7 +30,7 @@
 //declares the display
 Adafruit_RA8875 tft = Adafruit_RA8875(RA8875_CS, RA8875_RESET);
 FracCreate create=FracCreate(ROTARY_CLK,ROTARY_DT,SLIDER,BUTTONLEFT,BUTTONRIGHT);
-//FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
+FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
 
 void setup() {
   //intializing the button pins
@@ -75,7 +75,7 @@ void loop() {
   //delay(2500);
   create.dispDiff1_2();
   delay(2500);
-  //testing V=1
+  /*//testing V=1
   compare.dispDiff_1_1();
   delay(2500);
   compare.dispDiff_2_1();
@@ -117,5 +117,5 @@ void loop() {
   delay(2500);
   compare.dispDiff_3_6();
   delay(2500);
-  //compare.testerFunc();
+  //compare.testerFunc();*/
 }

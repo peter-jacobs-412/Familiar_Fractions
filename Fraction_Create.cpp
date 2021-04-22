@@ -392,13 +392,13 @@ void FracCreate::evalAnswer(bool isSlider, int numerator, int denominator)
                     denominator=denominator*2;
                 }
                 //output
+            
+            }
+
             screen.dispFrac(newNum,denominator,RIGHT);
             delay(1000);
             Serial.println("Wrong");
             screen.dispWrong();
-            }
-
-            
         }
     
 }
@@ -411,13 +411,14 @@ double FracCreate::getUserGuess(bool isSlider)
     }
     else
     {
+        measureEncoder();
         return 1.0*encoderVal/40.0;
     }
 }
 //function to get value of the encoder
 void FracCreate::measureEncoder()
 {
-    screen.dispCircleFrac(0,20,RIGHT);
+    screen.dispFrac(0,40,RIGHT);
     int rotation = digitalRead(clk);
     int value;
     while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW)
@@ -430,14 +431,14 @@ void FracCreate::measureEncoder()
         if (encoderVal<40)
         {
            encoderVal ++; 
-           //screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
+           screen.dispFrac(floor(encoderVal),40,RIGHT);
         }
        
      } else { //Counterclockwise
         if(encoderVal>0)
         {
-            encoderVal--;
-        //screen.dispCircleFrac(floor(encoderVal/2),20,RIGHT);
+            encoderVal --;
+        screen.dispFrac(floor(encoderVal),40,RIGHT);
         }
        
      }
