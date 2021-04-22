@@ -292,7 +292,7 @@ void FracCreate::dispDiff3_3()
   screen.dispSquareFrac(numerator, denominator, LEFT);
 
   //evaluate the useres answer
-  evalAnswer(true,numerator, denominator);
+  evalAnswer(true, numerator, denominator);
     
 }
 
@@ -418,7 +418,7 @@ double FracCreate::getUserGuess(bool isSlider)
 //function to get value of the encoder
 void FracCreate::measureEncoder()
 {
-    screen.dispFrac(0,40,RIGHT);
+    screen.dispCircleFrac(0,20,RIGHT);
     int rotation = digitalRead(clk);
     int value;
     while (digitalRead(left_button)!=LOW && digitalRead(right_button)!=LOW)
@@ -431,19 +431,19 @@ void FracCreate::measureEncoder()
         if (encoderVal<40)
         {
            encoderVal ++; 
-           screen.dispFrac(floor(encoderVal),40,RIGHT);
         }
        
      } else { //Counterclockwise
         if(encoderVal>0)
         {
             encoderVal --;
-        screen.dispFrac(floor(encoderVal),40,RIGHT);
         }
        
      }
      // this will print in the serial monitor.
-     
+     if(encoderVal % 2 == 0) {
+      screen.dispCircleFrac(encoderVal / 2, 20, RIGHT);
+     }
    } 
    rotation = value;
  } 

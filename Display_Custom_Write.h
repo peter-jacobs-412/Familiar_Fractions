@@ -59,6 +59,8 @@ class DisplayCustomWrite {
     void dispPolarGrid(int denom, double intial_angle, int display_num);
     double partialCirleHelper(double theta, int display_num);
 
+    //fast ass cirlce drawin
+
     //These functions display N digits that is properly centered based on display num,
     //and whether its supposed to be numerator or denominator
     void disp_1_Digit(int number, bool num_or_denom, int display_num);
