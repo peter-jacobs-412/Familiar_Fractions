@@ -339,6 +339,21 @@ void DisplayCustomWrite::dispCorrect() {
   display1.textSetCursor(85, frac_line_height);
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite("That Was Correct!!");
+
+  //good sound
+  tone(SPEAKER,noteE6);
+  delay(150);
+  tone(SPEAKER,noteG6);
+  delay(150);
+  tone(SPEAKER,noteE7);
+  delay(150);
+  tone(SPEAKER,noteC7);
+  delay(150);
+  tone(SPEAKER,noteD7);
+  delay(150);
+  tone(SPEAKER,noteG7);
+  delay(150);
+  noTone(SPEAKER);
   
 }
 void DisplayCustomWrite::dispWrong() {
@@ -349,4 +364,15 @@ void DisplayCustomWrite::dispWrong() {
   display1.textSetCursor(85, frac_line_height);
   display1.textTransparent(RA8875_BLACK);
   display1.textWrite("That Was Incorrect");
+
+  //bad sound
+  tone(SPEAKER,noteC4);
+  delay(260);
+  tone(SPEAKER,noteB3);
+  delay(260);
+  tone(SPEAKER,noteAs3);
+  delay(260);
+  tone(SPEAKER,noteA3);
+  delay(300);
+  noTone(SPEAKER);
 }

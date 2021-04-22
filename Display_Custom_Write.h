@@ -8,6 +8,20 @@
 //this is the value that is theta is compared against to see if we should have the triangle cutout above or below the line
 #define THI_LIMIT .927295218
 
+#define SPEAKER 25
+
+#define noteG7 3136
+#define noteC7 2093
+#define noteD7 2349
+#define noteE7 2637
+#define noteE6 1319
+#define noteG6 1568
+
+#define noteA3 220
+#define noteAs3 233
+#define noteB3 247
+#define noteC4 262
+
 //This class is used to have a standard set of functions used to display frractions in difrent formats to the screen
 class DisplayCustomWrite {
   private:

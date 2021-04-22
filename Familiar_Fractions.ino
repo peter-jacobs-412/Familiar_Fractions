@@ -12,6 +12,7 @@
 #define BUTTONLEFT 22
 #define BUTTONRIGHT 23
 
+
 //ROTARY ENCODE PINS
 #define ROTARY_CLK 46
 #define ROTARY_DT 47
