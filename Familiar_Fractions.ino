@@ -12,6 +12,7 @@
 #define BUTTONLEFT 22
 #define BUTTONRIGHT 23
 
+
 //ROTARY ENCODE PINS
 #define ROTARY_CLK 46
 #define ROTARY_DT 47
@@ -29,7 +30,7 @@
 //declares the display
 Adafruit_RA8875 tft = Adafruit_RA8875(RA8875_CS, RA8875_RESET);
 FracCreate create=FracCreate(ROTARY_CLK,ROTARY_DT,SLIDER,BUTTONLEFT,BUTTONRIGHT);
-//FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
+FracComp compare = FracComp(BUTTONLEFT, BUTTONRIGHT);
 
 void setup() {
   //intializing the button pins
@@ -46,7 +47,7 @@ void setup() {
   
   //intializing rand seed
   //intializing rand seed
-  randomSeed(300);
+  randomSeed(analogRead(A3));
 
   //start serial terminal
   Serial.begin(9600);
@@ -70,51 +71,104 @@ void setup() {
 }
 
 void loop() {
-  //create.dispDiff1_1();
-  //delay(2500);
-  create.dispDiff1_2();
-  delay(2500);
-  //testing V=1
+  
+  //compare level 1
   compare.dispDiff_1_1();
-  delay(2500);
-  compare.dispDiff_2_1();
-  delay(2500);
-  compare.dispDiff_3_1();
-  delay(2500);
-  //testing V=2
   compare.dispDiff_1_2();
-  delay(2500);
-  compare.dispDiff_2_2();
-  delay(2500);
-  compare.dispDiff_3_2();
-  delay(2500);
-  //testing v=3
   compare.dispDiff_1_3();
-  delay(2500);
-  compare.dispDiff_2_3();
-  delay(2500);
-  compare.dispDiff_3_3();
-  delay(2500);
-  //testing v=4
   compare.dispDiff_1_4();
-  delay(2500);
-  compare.dispDiff_2_4();
-  delay(2500);
-  compare.dispDiff_3_4();
-  delay(2500);
-  //testing v=5
   compare.dispDiff_1_5();
-  delay(2500);
-  compare.dispDiff_2_5();
-  delay(2500);
-  compare.dispDiff_3_5();
-  delay(2500);
-  //testing V=6
   compare.dispDiff_1_6();
-  delay(2500);
+  //create level 1
+  create.dispDiff1_1();
+  create.dispDiff1_2();
+  create.dispDiff1_3();
+  create.dispDiff1_4();
+  create.dispDiff1_5();
+  //compare level 2
+  compare.dispDiff_2_1();
+  compare.dispDiff_2_2();
+  compare.dispDiff_2_3();
+  compare.dispDiff_2_4();
+  compare.dispDiff_2_5();
   compare.dispDiff_2_6();
-  delay(2500);
-  compare.dispDiff_3_6();
-  delay(2500);
-  //compare.testerFunc();
+  //create level 2
+  create.dispDiff2_1();
+  create.dispDiff2_2();
+  create.dispDiff2_3();
+  create.dispDiff2_4();
+  create.dispDiff2_5();
+  //ending loop
+  while(1) {
+    int vs_level = random(6) + 1;
+    Serial.println("HERE");
+    Serial.println(vs_level);
+    if (vs_level == 1) {
+      Serial.println("1");
+      compare.dispDiff_1_1();
+      compare.dispDiff_2_1();
+      compare.dispDiff_1_2();
+      compare.dispDiff_2_2();
+      compare.dispDiff_3_1();
+
+      create.dispDiff1_1();
+      create.dispDiff2_1();
+      create.dispDiff3_1();
+    } else if (vs_level == 2) {
+      Serial.println("2");
+      compare.dispDiff_1_2();
+      compare.dispDiff_2_2();
+      compare.dispDiff_1_3();
+      compare.dispDiff_2_3();
+      compare.dispDiff_3_2();
+
+      create.dispDiff1_2();
+      create.dispDiff2_2();
+      create.dispDiff3_2();
+    } else if (vs_level == 3) {
+      Serial.println("3");
+      compare.dispDiff_1_3();
+      compare.dispDiff_2_3();
+      compare.dispDiff_1_4();
+      compare.dispDiff_2_4();
+      compare.dispDiff_3_3();
+
+      create.dispDiff1_3();
+      create.dispDiff2_3();
+      create.dispDiff3_3();
+    } else if (vs_level == 4) {
+      Serial.println("4");
+      compare.dispDiff_1_4();
+      compare.dispDiff_2_4();
+      compare.dispDiff_1_5();
+      compare.dispDiff_2_5();
+      compare.dispDiff_3_4();
+
+      create.dispDiff1_4();
+      create.dispDiff2_4();
+      create.dispDiff3_4();
+    } else if (vs_level == 5) {
+      Serial.println("5");
+      compare.dispDiff_1_5();
+      compare.dispDiff_2_5();
+      compare.dispDiff_1_6();
+      compare.dispDiff_2_6();
+      compare.dispDiff_3_5();
+
+      create.dispDiff1_5();
+      create.dispDiff2_5();
+      create.dispDiff3_5();
+    } else if (vs_level == 6) {
+      Serial.println("6");
+      compare.dispDiff_1_6();
+      compare.dispDiff_2_6();
+      compare.dispDiff_1_1();
+      compare.dispDiff_2_1();
+      compare.dispDiff_3_6();
+
+      create.dispDiff1_6();
+      create.dispDiff2_6();
+      create.dispDiff3_6();
+    }
+  }
 }

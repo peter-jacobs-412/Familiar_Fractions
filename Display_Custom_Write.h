@@ -8,6 +8,20 @@
 //this is the value that is theta is compared against to see if we should have the triangle cutout above or below the line
 #define THI_LIMIT .927295218
 
+#define SPEAKER 25
+
+#define noteG7 3136
+#define noteC7 2093
+#define noteD7 2349
+#define noteE7 2637
+#define noteE6 1319
+#define noteG6 1568
+
+#define noteA3 220
+#define noteAs3 233
+#define noteB3 247
+#define noteC4 262
+
 //This class is used to have a standard set of functions used to display frractions in difrent formats to the screen
 class DisplayCustomWrite {
   private:
@@ -44,6 +58,8 @@ class DisplayCustomWrite {
     void dispCircleFrac(int numer, int denom, int display_num);
     void dispPolarGrid(int denom, double intial_angle, int display_num);
     double partialCirleHelper(double theta, int display_num);
+
+    //fast ass cirlce drawin
 
     //These functions display N digits that is properly centered based on display num,
     //and whether its supposed to be numerator or denominator

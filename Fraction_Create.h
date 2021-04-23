@@ -40,7 +40,6 @@ class FracCreate {
     int clk;
     int dt;
     int encoderVal;
-    int denominator;
   public:
     FracCreate(int clk_pin, int dt_pin, int slider_pin, int left_pin, int right_pin);
     //displays a diffculty one problem
