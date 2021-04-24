@@ -9,8 +9,8 @@
 // ====================================================== //
 //Button 1 and 2 are the two buttons that are on our board below the display 
 //each corelating to one hafl of the dispay with button 1 on the left and button 2 on the right
-#define BUTTONLEFT 22
-#define BUTTONRIGHT 23
+#define BUTTONLEFT 23
+#define BUTTONRIGHT 22
 
 
 //ROTARY ENCODE PINS
